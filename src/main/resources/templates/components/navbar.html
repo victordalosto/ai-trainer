@@ -1,0 +1,65 @@
+<th:block th:fragment="navbar">
+
+    <nav class="menu-principal navbar navbar-expand-lg navbar-lighte bg-light sticky-top">
+
+        <a class="navbar-brand mx-5" href="#">
+            Neurit
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse mx-3" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="menu-principal-item nav-item active">
+                    <a class="nav-link" href="#">
+                        Home
+                    </a>
+                </li>
+
+                <li class="menu-principal-item nav-item">
+                    <a class="nav-link" href="#">
+                        Documentação
+                    </a>
+                </li>
+
+                <li class="menu-principal-item nav-item">
+                    <a class="nav-link" href="#">
+                        Quem somos
+                    </a>
+                </li>
+
+                <li class="menu-principal-item nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Action
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Another action
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Something else here
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <a class="github-icon" href="https://github.com/victordalosto" target="_blank"><i class="fab fa-github"></i></a>
+    </nav>
+    
+</th:block>

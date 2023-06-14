@@ -1,0 +1,69 @@
+<th:block th:fragment="form">
+
+    <div class="row workbench-form-header me-3 mt-1">
+
+        <div class="col-3">
+            <div class="header row">
+                <a href="#" class="col-1">
+                    <span class="form-volta-pagina arrow">&lt;</span>
+                </a>
+                <div class="form-pagination col-10 my-2">
+                    435000 / 435000
+                </div>
+                <a href="#" class="col-1">
+                    <span class="form-avanca-pagina arrow">&gt;</span>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="col-9">
+            <div class="form-rectangle">
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+                <div class="form-square"></div>
+            </div>
+        </div>
+    </div>
+
+    <form class="mt-4" action="/test" method="post">
+        <div class="mt-3">
+            <select id="form-tipo" name="form-tipo" 
+                    class="form-select" aria-label="Marcação no banco default">
+                <option value="Regulamentacao" selected>Regulamentacao</option>
+                <option value="Advertencia">Advertencia</option>
+                <option value="Indicativa">Indicativa</option>
+                <option value="Turistico">Turistico</option>
+                <option value="Educativa">Educativa</option>
+                <option value="Servicos">Servicos</option>
+                <option value="Outro">Outro</option>
+            </select>
+        </div>
+
+        <div class="mt-3">
+            <select id="form-qualidade" name="form-qualidade" 
+                    class="form-select" aria-label="Marcação no banco default">
+                <option value="Boa" selected>Boa</option>
+                <option value="Regular">Regular</option>
+                <option value="Ruim">Ruim</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+
+</th:block>

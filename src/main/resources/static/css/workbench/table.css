@@ -1,0 +1,66 @@
+.workbench-table {
+    margin: 1em;
+    box-shadow: 0 0 5px 5px rgba(20, 20, 20, 0.1);
+    border-radius: 35px;
+}
+
+
+.workbench-img {
+    border-radius: 35px;
+}
+
+
+.workbench-form-header {
+    border: 1px solid rgba(20, 20, 20, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0px;
+}
+
+.workbench-form-header div a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+
+.form-pagination {
+    text-align: center;
+    flex: 1;
+}
+
+
+.form-volta-pagina,
+.form-avanca-pagina {
+    height: 100%;
+    font-size: 1.3em;
+}
+
+
+.form-volta-pagina:hover,
+.form-avanca-pagina:hover {
+    color: rgb(16, 146, 40);
+    font-size: 1.6em;
+    font-style: bold;
+    transition: all 0.05s ease-in-out;
+}
+
+
+.form-rectangle {
+    display: flex;
+}
+
+
+.form-square {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: rgb(165, 161, 161);
+    margin: 5px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}

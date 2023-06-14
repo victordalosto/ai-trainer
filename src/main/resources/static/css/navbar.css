@@ -1,0 +1,33 @@
+.menu-principal {
+    box-shadow: 0 0 10px -5px rgba(20, 20, 20, 0.5)
+}
+
+
+.menu-principal-item {
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: 400;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.menu-principal-item a {
+    color: rgba(131, 129, 129, 0.85);
+}
+
+
+.github-icon {
+    padding-right: 5em;
+    color: rgb(60, 180, 60);
+}
+
+
+.github-icon i {
+    font-size: 35px;
+}
+
+
+.github-icon:hover {
+    color: #000000;
+    transition: all 0.2s ease-in-out;
+}
