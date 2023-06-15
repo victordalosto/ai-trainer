@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import dalosto.neurit.model.Parameter;
 import dalosto.neurit.service.DatabaseRepository;
 
@@ -26,13 +27,17 @@ public class HomeController {
 
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, 
+                      @RequestParam(defaultValue = "0") int page) 
+    {
         model.addAttribute("title", title);
         model.addAttribute("parameters", parameters);
         model.addAttribute("classifications", classifications);
 
         model.addAttribute("total", databaseRepository.getDatabaseLength());
         model.addAttribute("contador", databaseRepository.getMappedLength());
+        model.addAttribute("domains", databaseRepository.getDomains(page));
+
         return "home";
     }
 

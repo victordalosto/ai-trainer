@@ -2,3 +2,26 @@
 #form-classification {
     border-width: 3px;
 }
+
+
+.form-rectangle {
+    display: flex;
+}
+
+
+.form-square {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: rgb(165, 161, 161);
+    margin: 5px;
+    border: 0.5px rgb(129, 128, 128) solid;
+    border-radius: 3px;
+}
+
+
+.form-square-selected {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: var(--green-principal);
+    margin: 5px;
+}

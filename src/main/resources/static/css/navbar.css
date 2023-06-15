@@ -18,7 +18,7 @@
 
 .github-icon {
     padding-right: 5em;
-    color: rgb(60, 180, 60);
+    color: var(--green-principal);
 }
 
 

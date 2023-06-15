@@ -1,4 +1,6 @@
+// Forms color handler
 (() => {
+
     const formParameter = document.getElementById('form-parameters');
     const formClassification = document.getElementById('form-classification');
 
@@ -22,3 +24,11 @@
     updateColor();
 
 })();
+
+
+function goToPage(event) {
+    if (event.key == 'Enter')  {
+        const pageNumber = document.getElementById('page-number').value;
+        window.location.href = `/?page=${pageNumber}`;
+    }
+}
