@@ -1,0 +1,29 @@
+-- DROP TABLE IF EXISTS sinalizacao;
+-- CREATE TABLE sinalizacao (
+-- 	id integer primary key,
+-- 	nome varchar,
+-- 	condicao varchar,
+-- 	lado varchar,
+-- 	km integer,
+-- 	sentido char(1),
+-- 	gps_y double precision,
+-- 	gps_x double precision,
+--  gps_z double precision,
+-- 	uf char(2),
+-- 	br char(3),
+--  is_mapped boolean,
+--  is_valid boolean
+-- );
+
+-- CREATE INDEX index_sinalizacao_id ON sinalizacao USING btree (id ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_nome ON sinalizacao USING btree (nome ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_condicao ON sinalizacao USING btree (condicao ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_uf ON sinalizacao USING btree (uf ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_br ON sinalizacao USING btree (br ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_sentido ON sinalizacao USING btree (sentido ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_km ON sinalizacao USING btree (km ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_gps_z ON sinalizacao USING btree (gps_z ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_gps_y ON sinalizacao USING btree (gps_y ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_gps_x ON sinalizacao USING btree (gps_x ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_mapeado ON sinalizacao USING btree (is_mapped ASC NULLS LAST);
+-- CREATE INDEX index_sinalizacao_validade ON sinalizacao USING btree (is_valid ASC NULLS LAST);

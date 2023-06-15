@@ -1,33 +1,24 @@
 (() => {
-    const formParameter = document.getElementById('form-tipo');
-    const qualidade = document.getElementById('form-qualidade');
+    const formParameter = document.getElementById('form-parameters');
+    const formClassification = document.getElementById('form-classification');
 
-    updateColor();
-    alteraCorQualidade();
 
     function updateColor() {
-        const color = formParameter.options[formParameter.selectedIndex]
-                          .getAttribute("color");
-        formParameter.style.borderColor = color;
+        formParameter.style.borderColor = formParameter.options[formParameter.selectedIndex].getAttribute("color");;
+        formClassification.style.borderColor = formClassification.options[formClassification.selectedIndex].getAttribute("color");;
     }
 
-
-    function alteraCorQualidade() {
-        const value = qualidade.value.toLowerCase();
-        if (value == 'boa') {
-            qualidade.style.borderColor = 'green';
-        } else if (value == 'ruim') {
-            qualidade.style.borderColor = 'red';
-        } else {
-            qualidade.style.borderColor = 'orange';
-        }
-    }
-
+    
     formParameter.addEventListener('change', function() {
         updateColor();
     });
 
-    qualidade.addEventListener('change', function() {
-        alteraCorQualidade();
+
+    formClassification.addEventListener('change', function() {
+        updateColor();
     });
+
+
+    updateColor();
+
 })();
