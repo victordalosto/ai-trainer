@@ -14,7 +14,7 @@
 	<artifactId>neurit</artifactId>
 	<version>1.0.0</version>
 	<name>neurit</name>
-	<description>Neural Implementation for Infraestructure and Transport</description>
+	<description>Neural Training Framework</description>
 
 	<properties>
 		<java.version>17</java.version>

@@ -1,34 +1,14 @@
 (() => {
-    const tipo = document.getElementById('form-tipo');
+    const formParameter = document.getElementById('form-tipo');
     const qualidade = document.getElementById('form-qualidade');
 
-    alteraCorTipo();
+    updateColor();
     alteraCorQualidade();
 
-    function alteraCorTipo() {
-        const value = tipo.value.toLowerCase();
-        if (value == 'regulamentacao') {
-            tipo.style.borderColor = 'red';
-        } 
-        else if (value == 'advertencia') {
-            tipo.style.borderColor = 'rgb(225, 169, 24)';
-        } 
-        else if(value == 'indicativa') {
-            tipo.style.borderColor = 'green';
-        }
-        else if(value == 'servicos') {
-            tipo.style.borderColor = 'blue';
-        }
-        else if(value == 'educativa') {
-            tipo.style.borderColor = 'white';
-        }
-        else if(value == 'turistico') {
-            tipo.style.borderColor = 'brown';
-        } 
-        else {
-            tipo.style.borderColor = 'black';
-        }
-
+    function updateColor() {
+        const color = formParameter.options[formParameter.selectedIndex]
+                          .getAttribute("color");
+        formParameter.style.borderColor = color;
     }
 
 
@@ -43,8 +23,8 @@
         }
     }
 
-    tipo.addEventListener('change', function() {
-        alteraCorTipo();
+    formParameter.addEventListener('change', function() {
+        updateColor();
     });
 
     qualidade.addEventListener('change', function() {

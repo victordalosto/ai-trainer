@@ -44,14 +44,10 @@
         <div class="mt-3">
             <select id="form-tipo" name="form-tipo" 
                     class="form-select" aria-label="Marcação no banco default">
-                <option value="Regulamentacao" selected>Regulamentacao</option>
-                <option value="Advertencia">Advertencia</option>
-                <option value="Indicativa">Indicativa</option>
-                <option value="Turistico">Turistico</option>
-                <option value="Educativa">Educativa</option>
-                <option value="Servicos">Servicos</option>
-                <option value="Outro">Outro</option>
-            </select>
+                    <option th:each="p : ${parameters}" 
+                        th:value="${p.name}" th:text="${p.name}"
+                        th:color="${p.color}"></option>
+                    </select>
         </div>
 
         <div class="mt-3">
