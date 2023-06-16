@@ -4,7 +4,7 @@
 
         <div class="col-2 ps-1 pagination">
 
-            <a class="page-link arrow" th:href="'/?page=' + ${domains.getPageable().getPageNumber() - 1}">
+            <a class="page-link arrow" th:href="'/?page=' + (${domains.getPageable().getPageNumber() - 1} < 1 ? 1 : ${domains.getPageable().getPageNumber() - 1})">
                 <span aria-hidden="true">&laquo;</span>
             </a>
 

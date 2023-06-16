@@ -40,8 +40,8 @@ public class DatabaseRepository {
 
 
     private int putPagesInsideLimits(int page) {
-        if (page <= 0) {
-            return 0;
+        if (page <= 1) {
+            return 1;
         }
         if (totalPages == 0) {
             totalPages = repository.findAll(PageRequest.of(0, paginationSize)).getTotalPages() -1;

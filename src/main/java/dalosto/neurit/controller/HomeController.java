@@ -28,7 +28,8 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model, 
-                      @RequestParam(defaultValue = "0") int page) 
+                      @RequestParam(defaultValue = "1") int page,
+                      @RequestParam(defaultValue = "1") int item)
     {
         model.addAttribute("title", title);
         model.addAttribute("parameters", parameters);
