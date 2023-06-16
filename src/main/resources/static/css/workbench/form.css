@@ -19,9 +19,16 @@
 }
 
 
-.form-square-selected {
-    width: 1.5em;
-    height: 1.5em;
+.form-square-mapped {
     background-color: var(--green-principal);
-    margin: 5px;
+}
+
+
+.form-square-notclear {
+    background-color: orange;
+}
+
+
+.form-square-notvalid {
+    background-color: red;
 }
