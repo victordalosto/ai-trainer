@@ -72,7 +72,8 @@
                 <option th:each="p : ${parameters}" 
                         th:text="${p.name}" 
                         th:value="${p.name}" 
-                        th:color="${p.color}">
+                        th:color="${p.color}"
+                        th:selected="${domain.parameter == p.name}">
                 </option>
             </select>
         </div>
@@ -83,7 +84,8 @@
                 <option th:each="p : ${classifications}" 
                         th:text="${p.name}" 
                         th:value="${p.name}" 
-                        th:color="${p.color}">
+                        th:color="${p.color}"
+                        th:selected="${domain.classification == p.name}">
                 </option>
             </select>
             </select>
