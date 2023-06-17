@@ -15,11 +15,12 @@ public class DatabaseRepository {
     @Autowired
     private DomainRepository repository;
 
-    private int totalOfPages;       // cacheable
-    private long databaseLength;  // cacheable
+    private int totalOfPages;            // cacheable
+    private int totalOfItensInLastPage; // cacheable
+    private long databaseLength;   // cacheable
 
     @Getter
-    private int paginationSize = 12;
+    private int paginationSize = 10;
 
 
     public Page<Domain> getDomains(int page) {
@@ -29,9 +30,18 @@ public class DatabaseRepository {
 
     public int getTotalOfPages() {
         if (totalOfPages == 0) {
-            totalOfPages = repository.findAll(PageRequest.of(0, paginationSize)).getTotalPages() - 1;
+            totalOfPages = repository.findAll(PageRequest.of(0, paginationSize)).getTotalPages();
         }
         return totalOfPages;
+    }
+
+
+    public int getTotalOfItensInLastPage() {
+        if (totalOfItensInLastPage == 0) {
+            int totalOfPages = getTotalOfPages();
+            totalOfItensInLastPage = repository.findAll(PageRequest.of(totalOfPages-1, paginationSize)).getNumberOfElements();
+        }
+        return totalOfItensInLastPage;
     }
 
 

@@ -48,6 +48,7 @@ public class HomeController {
 
         Page<Domain> domains = databaseRepository.getDomains(pagination.getPage());
         model.addAttribute("domains", domains);
+        model.addAttribute("domain", domains.getContent().get(pagination.getItem()));
         model.addAttribute("page", domains.getPageable().getPageNumber());
         model.addAttribute("item", pagination.getItem());
 

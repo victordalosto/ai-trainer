@@ -24,7 +24,4 @@ public class Domain {
     @Column(name = "is_valid")
     private boolean isValid;
 
-    @Column(name = "is_clear")
-    private boolean isClear;
-
 }

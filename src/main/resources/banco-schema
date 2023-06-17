@@ -12,8 +12,7 @@
 -- 	uf char(2),
 -- 	br char(3),
 --  is_mapped boolean,
---  is_valid boolean,
---  is_clear boolean
+--  is_valid boolean
 -- );
 
 -- CREATE INDEX index_sinalizacao_id ON sinalizacao USING btree (id ASC NULLS LAST);
@@ -28,4 +27,3 @@
 -- CREATE INDEX index_sinalizacao_gps_x ON sinalizacao USING btree (gps_x ASC NULLS LAST);
 -- CREATE INDEX index_sinalizacao_mapeado ON sinalizacao USING btree (is_mapped ASC NULLS LAST);
 -- CREATE INDEX index_sinalizacao_validade ON sinalizacao USING btree (is_valid ASC NULLS LAST);
--- CREATE INDEX index_sinalizacao_limpo ON sinalizacao USING btree (is_clear ASC NULLS LAST);

@@ -2,6 +2,7 @@ package inframachine.trainer.filter;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import inframachine.trainer.model.Pagination;
 import inframachine.trainer.service.DatabaseRepository;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -40,7 +41,9 @@ public class PaginationConfiguration implements Filter {
                                   HttpServletRequest request, 
                                   HttpServletResponse response)
                                   throws IOException, ServletException {
-                                    
+        
+        Pagination pagination = new Pagination();
+        
         String pageParam = request.getParameter("page");
         String itemParam = request.getParameter("item");
         boolean redirect = false;
@@ -57,24 +60,44 @@ public class PaginationConfiguration implements Filter {
                 pageParam = "0";
             }
         }
+        
         if (itemParam != null) {
             try {
                 if (Integer.parseInt(itemParam) < 0) {
-                    throw new NumberFormatException();
+                    if (Integer.parseInt(pageParam) <= 0) {
+                        throw new NumberFormatException();
+                    }
+                    else {
+                        itemParam = databaseRepository.getPaginationSize() - 1 + "";
+                        pageParam = String.valueOf(Integer.parseInt(pageParam) - 1);
+                        redirect = true;
+                    }
                 } else if (Integer.parseInt(itemParam) >= databaseRepository.getPaginationSize()) {
+                    redirect = true;
                     itemParam = "0";
                     pageParam = String.valueOf(Integer.parseInt(pageParam) + 1);
-                    redirect = true;
                 }
             } catch (NumberFormatException e) {
                 redirect = true;
                 itemParam = "0";
             }
         }
-        if (Integer.parseInt(pageParam) > databaseRepository.getTotalOfPages()) {
+        System.out.println("pageParam: " + pageParam);
+        System.out.println("itemParam: " + itemParam);
+        System.out.println();
+
+        if (Integer.parseInt(pageParam) >= databaseRepository.getTotalOfPages()-1) {
             redirect = true;
-            pageParam = String.valueOf(databaseRepository.getTotalOfPages());
+            pageParam = String.valueOf(databaseRepository.getTotalOfPages() - 1);
         }
+
+        if (Integer.parseInt(pageParam) == databaseRepository.getTotalOfPages()-1 
+                && itemParam != null
+                && Integer.parseInt(itemParam) >= databaseRepository.getTotalOfItensInLastPage()) {
+            redirect = true;
+            itemParam = String.valueOf(databaseRepository.getTotalOfItensInLastPage() - 1);
+        }
+
         if (redirect) {
             String location = "/?page=" + pageParam + "&item=" + itemParam;
             response.sendRedirect(location);
