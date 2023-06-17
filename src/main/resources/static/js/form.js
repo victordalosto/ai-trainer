@@ -1,7 +1,7 @@
 // Forms color handler
 (() => {
 
-    const formParameter = document.getElementById('form-parameters');
+    const formParameter = document.getElementById('form-parameter');
     const formClassification = document.getElementById('form-classification');
 
 
