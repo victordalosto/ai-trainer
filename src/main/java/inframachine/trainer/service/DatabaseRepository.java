@@ -57,4 +57,18 @@ public class DatabaseRepository {
         return repository.countByIsMapped(true);
     }
 
+
+    public void save(String method, String id) {
+        Domain domain = repository.findById(Integer.valueOf(id)).get();
+        if (method.equals("SAVE")) {
+            domain.setValid(true);
+            domain.setMapped(true);
+            repository.save(domain);
+        } else if (method.equals("DELETE")) {
+            domain.setValid(false);
+            domain.setMapped(false);
+            repository.save(domain);
+        }
+    }
+
 }
