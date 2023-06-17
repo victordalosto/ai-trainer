@@ -5,7 +5,7 @@
         <!-- PAGINATION -->
         <div class="col-2 ps-1 pagination">
 
-            <a class="page-link arrow" th:href="'/?page=' + (${domains.getPageable().getPageNumber() - 1} < 0 ? 0 : ${domains.getPageable().getPageNumber() - 1})">
+            <a class="page-link arrow" th:href="'/?page=' + ${page - 1}">
                 <span aria-hidden="true">&laquo;</span>
             </a>
 
@@ -17,7 +17,7 @@
                 </input>
             </div>
 
-            <a class="page-link arrow" th:href="'/?page=' + ${domains.getPageable().getPageNumber() + 1}">
+            <a class="page-link arrow" th:href="'/?page=' + ${page + 1}">
                 <span aria-hidden="true">&raquo;</span>
             </a>
 
@@ -27,9 +27,8 @@
         <!-- SQUARES -->
         <div class="col-9 p-0">
             <div class="form-rectangle">
-                <!-- ?page=' + ${domains.getPageable().getPageNumber()} + '&item=' + ${status.index} -->
                 <a th:each ="domain, status : ${domains}" 
-                   th:attr="href=@{'/?page=' + ${domains.getPageable().getPageNumber()} + '&item=' + ${status.index}}"
+                   th:attr="href=@{'/?page=' + ${page} + '&item=' + ${status.index}}"
                    class = "form-link-page">
 
                     <div class = "form-square"

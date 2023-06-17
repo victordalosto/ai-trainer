@@ -2,9 +2,11 @@ package inframachine.trainer.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import inframachine.trainer.model.Domain;
 import inframachine.trainer.model.Pagination;
 import inframachine.trainer.model.Parameter;
 import inframachine.trainer.service.DatabaseRepository;
@@ -43,7 +45,10 @@ public class HomeController {
 
         model.addAttribute("total", databaseRepository.getDatabaseLength());
         model.addAttribute("contador", databaseRepository.getMappedLength());
-        model.addAttribute("domains", databaseRepository.getDomains(pagination.getPage()));
+
+        Page<Domain> domains = databaseRepository.getDomains(pagination.getPage());
+        model.addAttribute("domains", domains);
+        model.addAttribute("page", domains.getPageable().getPageNumber());
         model.addAttribute("item", pagination.getItem());
 
         return "home";

@@ -23,35 +23,40 @@ public class PaginationConfiguration implements Filter {
     public void doFilter(ServletRequest servletRequest, 
                          ServletResponse servletResponse, 
                          FilterChain filterChain)
-                            throws IOException, ServletException 
+                        throws IOException, ServletException 
     {
-
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if (!isHomePage(request)) {
+        if (!isTrainerPage(request)) {
             filterChain.doFilter(request, response);
             return;
         }
+        filterOrRedirect(filterChain, request, response);
+    }
 
+
+    private void filterOrRedirect(FilterChain filterChain, 
+                                  HttpServletRequest request, 
+                                  HttpServletResponse response)
+                                  throws IOException, ServletException {
+                                    
         String pageParam = request.getParameter("page");
         String itemParam = request.getParameter("item");
-
         boolean redirect = false;
 
-        if (pageParam != null) {
+        if (pageParam == null) {
+            pageParam = "0";
+        } else {
             try {
                 if (Integer.parseInt(pageParam) < 0) {
                     throw new NumberFormatException();
-                } 
+                }
             } catch (NumberFormatException e) {
                 redirect = true;
                 pageParam = "0";
             }
-        } else {
-            pageParam = "0";
         }
-
         if (itemParam != null) {
             try {
                 if (Integer.parseInt(itemParam) < 0) {
@@ -65,14 +70,11 @@ public class PaginationConfiguration implements Filter {
                 redirect = true;
                 itemParam = "0";
             }
-
         }
-
         if (Integer.parseInt(pageParam) > databaseRepository.getTotalOfPages()) {
             redirect = true;
             pageParam = String.valueOf(databaseRepository.getTotalOfPages());
         }
-
         if (redirect) {
             String location = "/?page=" + pageParam + "&item=" + itemParam;
             response.sendRedirect(location);
@@ -83,12 +85,10 @@ public class PaginationConfiguration implements Filter {
     }
 
 
-    private boolean isHomePage(HttpServletRequest request) {
+    private boolean isTrainerPage(HttpServletRequest request) {
         String contextPath = request.getContextPath();
         String requestURI = request.getRequestURI();
         return requestURI.equals(contextPath) || requestURI.equals(contextPath + "/");
     }
-
-
 
 }
