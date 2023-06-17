@@ -6,6 +6,13 @@
 
 .form-rectangle {
     display: flex;
+    justify-content: center;
+}
+
+
+.form-link-page {
+    color:inherit;
+    text-decoration: inherit;
 }
 
 
@@ -14,8 +21,26 @@
     height: 1.5em;
     background-color: rgb(165, 161, 161);
     margin: 5px;
-    border: 0.5px rgb(129, 128, 128) solid;
-    border-radius: 3px;
+    border: 0.5px rgba(129, 128, 128, 0.3) solid;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:  rgb(247, 247, 247);
+    font-weight: 600;
+    font-family: monospace;
+}
+
+
+.form-square-selected {
+    border: 2.5px solid rgb(15, 15, 15);
+    border-radius: 5px;
+    box-shadow: 0 0 3px 1px rgba(20, 20, 20, 0.5)
+}
+
+
+.form-square-deselected {
+    opacity: 0.32;
 }
 
 

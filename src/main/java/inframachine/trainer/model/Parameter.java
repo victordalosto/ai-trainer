@@ -1,4 +1,4 @@
-package dalosto.neurit.model;
+package inframachine.trainer.model;
 import lombok.Data;
 
 

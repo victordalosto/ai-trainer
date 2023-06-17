@@ -1,11 +1,12 @@
-package dalosto.neurit.service;
+package inframachine.trainer.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import dalosto.neurit.model.Domain;
-import dalosto.neurit.repository.DomainRepository;
+import inframachine.trainer.model.Domain;
+import inframachine.trainer.repository.DomainRepository;
+import lombok.Getter;
 
 
 @Service
@@ -14,10 +15,24 @@ public class DatabaseRepository {
     @Autowired
     private DomainRepository repository;
 
-    private int totalPages;       // cacheable
+    private int totalOfPages;       // cacheable
     private long databaseLength;  // cacheable
 
+    @Getter
     private int paginationSize = 12;
+
+
+    public Page<Domain> getDomains(int page) {
+        return repository.findAll(PageRequest.of(page, paginationSize, Sort.by("id")));
+    }
+
+
+    public int getTotalOfPages() {
+        if (totalOfPages == 0) {
+            totalOfPages = repository.findAll(PageRequest.of(0, paginationSize)).getTotalPages() - 1;
+        }
+        return totalOfPages;
+    }
 
 
     public long getDatabaseLength() {
@@ -31,26 +46,5 @@ public class DatabaseRepository {
     public long getMappedLength() {
         return repository.countByIsMapped(true);
     }
-
-
-    public Page<Domain> getDomains(int page) {
-        page = putPagesInsideLimits(page);
-        return repository.findAll(PageRequest.of(page, paginationSize, Sort.by("id")));
-    }
-
-
-    private int putPagesInsideLimits(int page) {
-        if (page <= 1) {
-            return 1;
-        }
-        if (totalPages == 0) {
-            totalPages = repository.findAll(PageRequest.of(0, paginationSize)).getTotalPages() -1;
-        }
-        if (page > totalPages) {
-            page = totalPages;
-        }
-        return page;
-    }
-
 
 }

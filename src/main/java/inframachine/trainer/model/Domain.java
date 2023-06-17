@@ -1,4 +1,4 @@
-package dalosto.neurit.model;
+package inframachine.trainer.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

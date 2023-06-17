@@ -1,13 +1,14 @@
-package dalosto.neurit.controller;
+package inframachine.trainer.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import dalosto.neurit.model.Parameter;
-import dalosto.neurit.service.DatabaseRepository;
+import inframachine.trainer.model.Pagination;
+import inframachine.trainer.model.Parameter;
+import inframachine.trainer.service.DatabaseRepository;
+import inframachine.trainer.service.PaginationService;
 
 
 @Controller
@@ -25,19 +26,25 @@ public class HomeController {
     @Autowired
     private DatabaseRepository databaseRepository;
 
+    @Autowired
+    private PaginationService paginationService;
+
 
     @GetMapping("/")
     public String home(Model model, 
-                      @RequestParam(defaultValue = "1") int page,
-                      @RequestParam(defaultValue = "1") int item)
+                       Pagination pagination)
     {
+
+        paginationService.fixPagination(pagination);
+        
         model.addAttribute("title", title);
         model.addAttribute("parameters", parameters);
         model.addAttribute("classifications", classifications);
 
         model.addAttribute("total", databaseRepository.getDatabaseLength());
         model.addAttribute("contador", databaseRepository.getMappedLength());
-        model.addAttribute("domains", databaseRepository.getDomains(page));
+        model.addAttribute("domains", databaseRepository.getDomains(pagination.getPage()));
+        model.addAttribute("item", pagination.getItem());
 
         return "home";
     }

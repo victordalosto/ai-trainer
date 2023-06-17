@@ -1,4 +1,4 @@
-package dalosto.neurit;
+package inframachine.trainer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

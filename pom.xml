@@ -10,11 +10,11 @@
 		<relativePath /> 
 	</parent>
 
-	<groupId>dalosto</groupId>
-	<artifactId>neurit</artifactId>
+	<groupId>inframachine</groupId>
+	<artifactId>trainer</artifactId>
 	<version>1.0.0</version>
-	<name>neurit</name>
-	<description>Neural Training Framework</description>
+	<name>trainer</name>
+	<description>Neural trainer Framework</description>
 
 	<properties>
 		<java.version>17</java.version>

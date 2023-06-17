@@ -1,9 +1,9 @@
-package dalosto.neurit.configuration;
+package inframachine.trainer.configuration;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import dalosto.neurit.model.Parameter;
+import inframachine.trainer.model.Parameter;
 
 
 @Configuration
@@ -29,9 +29,9 @@ public class ParameterConfiguration {
 
     @Bean("classifications")
     public List<Parameter> classifications() {
-        classifications.add(new Parameter("boa", "Green"));
-        classifications.add(new Parameter("regular", "Orange"));
-        classifications.add(new Parameter("ruim", "Red"));
+        classifications.add(new Parameter("boa", "green"));
+        classifications.add(new Parameter("regular", "orange"));
+        classifications.add(new Parameter("ruim", "red"));
         return this.classifications;
     }
 

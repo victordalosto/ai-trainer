@@ -2,9 +2,10 @@
 
     <div class="form-page-div py-1 row me-1">
 
+        <!-- PAGINATION -->
         <div class="col-2 ps-1 pagination">
 
-            <a class="page-link arrow" th:href="'/?page=' + (${domains.getPageable().getPageNumber() - 1} < 1 ? 1 : ${domains.getPageable().getPageNumber() - 1})">
+            <a class="page-link arrow" th:href="'/?page=' + (${domains.getPageable().getPageNumber() - 1} < 0 ? 0 : ${domains.getPageable().getPageNumber() - 1})">
                 <span aria-hidden="true">&laquo;</span>
             </a>
 
@@ -22,23 +23,35 @@
 
         </div>
 
-
+        
+        <!-- SQUARES -->
         <div class="col-9 p-0">
             <div class="form-rectangle">
-                <div th:each="domain : ${domains}" 
-                class = "form-square"
-                th:classappend="${!domain.isValid} ? 'form-square-notvalid' 
-                            : (${!domain.isClear} ? 'form-square-notclear' 
-                            : (${domain.isMapped} ? 'form-square-mapped' 
-                            : ''))">
-                </div>
+                <!-- ?page=' + ${domains.getPageable().getPageNumber()} + '&item=' + ${status.index} -->
+                <a th:each ="domain, status : ${domains}" 
+                   th:attr="href=@{'/?page=' + ${domains.getPageable().getPageNumber()} + '&item=' + ${status.index}}"
+                   class = "form-link-page">
+
+                    <div class = "form-square"
+                        th:classappend="(${!domain.isValid} ? 'form-square-notvalid' 
+                        : (${!domain.isClear} ? 'form-square-notclear' 
+                        : (${domain.isMapped} ? 'form-square-mapped' 
+                        : '')))
+                        + (${status.index == item} ? ' form-square-selected' : ' form-square-deselected')">
+                        <span th:if="${status.index == item}" th:text="X"></span>
+                    </div>
+                </a>
             </div>
         </div>
 
     </div>
 
 
+
+    <!-- FORM -->
     <form class="mt-4" action="/test" method="post">
+
+        <!-- FIRST FORM ITEM : [REGULAMENTACAO | INDICATIVA | ...] -->
         <div class="mt-3">
             <select id="form-parameters" name="form-parameters" class="form-select">
                 <option th:each="p : ${parameters}" 
@@ -49,6 +62,7 @@
             </select>
         </div>
 
+        <!-- SECOND FORM ITEM : [BOA | REGULAR | RUIM] -->
         <div class="mt-3">
             <select id="form-classification" name="form-classification" class="form-select">
                 <option th:each="p : ${classifications}" 
