@@ -7,7 +7,8 @@
                 title
             </h5>
 
-            <span class="text-end col-5 me-2" th:text="'Total marcado: ' + ${contador} + ' / ' + ${total} + ' (' + ${#numbers.formatPercent((contador/total), 1, 1)}  + ')'">
+            <span class="text-end col-5 me-2" 
+                  th:text="'Total marcado: ' + ${contador} + ' / ' + ${total} + ' (' + ${#numbers.formatPercent((contador/total), 1, 1)}  + ')'">
                 contador
             </span>
         </div>

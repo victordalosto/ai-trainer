@@ -1,31 +1,35 @@
 <th:block th:fragment="form">
 
-    <div class="form-page-div py-1 row me-1">
+    <div class="row form-page-div py-1 mx-1">
 
         <!-- PAGINATION -->
-        <div class="col-2 ps-1 pagination">
+        <div class="col-lg-2 col-12 ps-1 pagination my-2">
 
             <a class="page-link arrow" th:href="'/?page=' + ${page - 1}">
-                <span aria-hidden="true">&laquo;</span>
+                <span aria-hidden="true">
+                    &laquo;
+                </span>
             </a>
 
             <div class="input-group">
                 <input id="page-number" type="text" 
                         class="page-link form-control" 
-                        th:value="${domains.getPageable().getPageNumber()}"
+                        th:value="${page}"
                         onkeydown="goToPage(event)">
                 </input>
             </div>
 
             <a class="page-link arrow" th:href="'/?page=' + ${page + 1}">
-                <span aria-hidden="true">&raquo;</span>
+                <span aria-hidden="true">
+                    &raquo;
+                </span>
             </a>
 
         </div>
 
         
         <!-- SQUARES -->
-        <div class="col-9 p-0">
+        <div class="col-lg-9 col-12 p-0 my-2">
             <div class="form-rectangle">
                 <a th:each ="domain, status : ${domains}" 
                    th:attr="href=@{'/?page=' + ${page} + '&item=' + ${status.index}}"
@@ -73,7 +77,28 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <div class="row mt-4">
+
+            <div class="col-6">
+                <button id="btn-delete" 
+                        name="btn-delete" 
+                        class="btn btn-danger" 
+                        style="width: 100px"
+                        type="button">
+                            Salvar
+                </button>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+                <button id="btn-save" 
+                        name="btn-save" 
+                        class="btn btn-success" 
+                        style="width: 300px"
+                        type="button">
+                            Salvar
+                </button>
+            </div>
+        </div>
     </form>
 
 </th:block>
