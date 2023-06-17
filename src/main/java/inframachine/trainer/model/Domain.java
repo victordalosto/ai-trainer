@@ -6,7 +6,7 @@ import lombok.Data;
 
 
 @Data
-@Entity(name = "sinalizacao")
+@Entity(name = "placas")
 public class Domain {
 
     @Id

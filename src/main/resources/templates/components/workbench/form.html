@@ -67,6 +67,7 @@
     <form class="mt-4" th:action="@{/test/{id}(id=${domain.id})}" method="post">
 
         <input id="form-id" type="hidden" name="id" th:value="${domain.id}">
+        <input id="form-page" type="hidden" name="nextPage" th:value="'/?page=' + ${page} + '&item=' + ${item+1}">
 
         <!-- FIRST FORM ITEM : [REGULAMENTACAO | INDICATIVA | ...] -->
         <div class="mt-3">
@@ -98,7 +99,9 @@
 
             <div class="col-6">
                 <button id="btn-delete" 
-                        onclick="submitDelete(event)"
+                        type="submit"
+                        name="method"
+                        value="DELETE"
                         class="btn btn-danger">
                             Deletar
                 </button>
@@ -106,6 +109,8 @@
 
             <div class="col-6 d-flex justify-content-end">
                 <button id="btn-save" 
+                        name="method"
+                        value="SAVE"
                         type="submit">
                             Salvar
                 </button>
