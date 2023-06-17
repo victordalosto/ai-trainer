@@ -17,24 +17,31 @@ import jakarta.servlet.http.HttpServletResponse;
 public class PaginationConfiguration implements Filter {
 
     @Autowired
-    private DatabaseRepository databaseRepository;
+    private DatabaseRepository repository;
 
 
     @Override
     public void doFilter(ServletRequest servletRequest, 
                          ServletResponse servletResponse, 
-                         FilterChain filterChain)
-                        throws IOException, ServletException 
+                         FilterChain filterChain)throws IOException, ServletException 
     {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-
-        if (!isTrainerPage(request)) {
-            filterChain.doFilter(request, response);
+        if (!isTrainerPage(servletRequest)) {
+            filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
-        filterOrRedirect(filterChain, request, response);
+        filterOrRedirect(filterChain, 
+                         (HttpServletRequest) servletRequest, 
+                         (HttpServletResponse) servletResponse);
     }
+
+
+
+    private boolean isTrainerPage(ServletRequest request) {
+        String requestURI = ((HttpServletRequest) request).getRequestURI();
+        String contextPath = ((HttpServletRequest) request).getContextPath();
+        return requestURI.equals(contextPath) || requestURI.equals(contextPath + "/");
+    }
+
 
 
     private void filterOrRedirect(FilterChain filterChain, 
@@ -43,75 +50,107 @@ public class PaginationConfiguration implements Filter {
                                   throws IOException, ServletException {
         
         Pagination pagination = new Pagination();
-        
+
         String pageParam = request.getParameter("page");
         String itemParam = request.getParameter("item");
-        boolean redirect = false;
 
-        if (pageParam == null) {
-            pageParam = "0";
-        } else {
-            try {
-                if (Integer.parseInt(pageParam) < 0) {
-                    throw new NumberFormatException();
-                }
-            } catch (NumberFormatException e) {
-                redirect = true;
-                pageParam = "0";
-            }
-        }
-        
-        if (itemParam != null) {
-            try {
-                if (Integer.parseInt(itemParam) < 0) {
-                    if (Integer.parseInt(pageParam) <= 0) {
-                        throw new NumberFormatException();
-                    }
-                    else {
-                        itemParam = databaseRepository.getPaginationSize() - 1 + "";
-                        pageParam = String.valueOf(Integer.parseInt(pageParam) - 1);
-                        redirect = true;
-                    }
-                } else if (Integer.parseInt(itemParam) >= databaseRepository.getPaginationSize()) {
-                    redirect = true;
-                    itemParam = "0";
-                    pageParam = String.valueOf(Integer.parseInt(pageParam) + 1);
-                }
-            } catch (NumberFormatException e) {
-                redirect = true;
-                itemParam = "0";
-            }
-        }
-        System.out.println("pageParam: " + pageParam);
-        System.out.println("itemParam: " + itemParam);
-        System.out.println();
+        fixPageParam(pagination, pageParam);
+        fixItemParam(pagination, itemParam);
 
-        if (Integer.parseInt(pageParam) >= databaseRepository.getTotalOfPages()-1) {
-            redirect = true;
-            pageParam = String.valueOf(databaseRepository.getTotalOfPages() - 1);
-        }
-
-        if (Integer.parseInt(pageParam) == databaseRepository.getTotalOfPages()-1 
-                && itemParam != null
-                && Integer.parseInt(itemParam) >= databaseRepository.getTotalOfItensInLastPage()) {
-            redirect = true;
-            itemParam = String.valueOf(databaseRepository.getTotalOfItensInLastPage() - 1);
-        }
-
-        if (redirect) {
-            String location = "/?page=" + pageParam + "&item=" + itemParam;
-            response.sendRedirect(location);
-            return;
+        if (pagination.isRedirect()) {
+            response.sendRedirect(pagination.getRedirectLocation());
         } else {
             filterChain.doFilter(request, response);
         }
     }
 
 
-    private boolean isTrainerPage(HttpServletRequest request) {
-        String contextPath = request.getContextPath();
-        String requestURI = request.getRequestURI();
-        return requestURI.equals(contextPath) || requestURI.equals(contextPath + "/");
+    private void fixPageParam(Pagination pagination, String pageParam) {
+        if (pageParam != null) {
+            try {
+                int page = Integer.parseInt(pageParam);
+                if (page < 0) {
+                    pagination.setRedirect(true);
+                    pagination.setPage(0);
+                }
+                if (page > repository.getTotalOfPages()-1) {
+                    pagination.setRedirect(true);
+                    pagination.setPage(repository.getTotalOfPages()-1);
+                } else {
+                    pagination.setPage(Integer.parseInt(pageParam));
+                }
+            } catch (NumberFormatException e) {
+                pagination.setRedirect(true);
+                pagination.setPage(0);
+            }
+        }
     }
 
+
+    private void fixItemParam(Pagination pagination, String itemParam) {
+        if (itemParam != null) {
+            try {
+                int item = Integer.parseInt(itemParam);
+                if (item == 0) {
+                    pagination.setItem(0);
+                } else {
+                    movePage(pagination, item);
+                } 
+            } catch (NumberFormatException e) {
+                pagination.setRedirect(true);
+                pagination.setItem(0);
+            }
+        }
+    }
+
+
+
+    private void movePage(Pagination pagination, int item) {
+        if (item < 0) {
+            goBackOnePage(pagination);
+        } else if (itemIsInSamePage(pagination, item)) {
+            pagination.setItem(item);
+        } else {
+            goForwardOnePage(pagination, item);
+        }
+    }
+
+
+
+    private void goBackOnePage(Pagination pagination) {
+        if (pagination.getPage() > 0) {
+            pagination.setRedirect(true);
+            pagination.setPage(pagination.getPage() - 1);
+            pagination.setItem(repository.getPageSize() - 1);
+        } else {
+            pagination.setRedirect(true);
+            pagination.setPage(0);
+            pagination.setItem(0);
+        }
+    }
+
+
+
+    private boolean itemIsInSamePage(Pagination pagination, int item) {
+        if (pagination.getPage() == repository.getTotalOfPages() - 1)
+            return item < repository.getTotalOfItensInLastPage() - 1;
+        return item < repository.getPageSize();
+    }
+
+
+
+    private void goForwardOnePage(Pagination pagination, int item) {
+        int nextPage = pagination.getPage() + 1;
+        if (nextPage < repository.getTotalOfPages()-1) {
+            pagination.setRedirect(true);
+            pagination.setPage(nextPage);
+            pagination.setItem(0);
+        } else {
+            int maxItem = repository.getTotalOfItensInLastPage() - 1;
+            if (item > maxItem) {
+                pagination.setRedirect(true);
+            }
+            pagination.setItem(maxItem);
+        }
+    }
 }

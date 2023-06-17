@@ -20,17 +20,17 @@ public class DatabaseRepository {
     private long databaseLength;   // cacheable
 
     @Getter
-    private int paginationSize = 10;
+    private int pageSize = 10;
 
 
     public Page<Domain> getDomains(int page) {
-        return repository.findAll(PageRequest.of(page, paginationSize, Sort.by("id")));
+        return repository.findAll(PageRequest.of(page, pageSize, Sort.by("id")));
     }
 
 
     public int getTotalOfPages() {
         if (totalOfPages == 0) {
-            totalOfPages = repository.findAll(PageRequest.of(0, paginationSize)).getTotalPages();
+            totalOfPages = repository.findAll(PageRequest.of(0, pageSize)).getTotalPages();
         }
         return totalOfPages;
     }
@@ -39,7 +39,7 @@ public class DatabaseRepository {
     public int getTotalOfItensInLastPage() {
         if (totalOfItensInLastPage == 0) {
             int totalOfPages = getTotalOfPages();
-            totalOfItensInLastPage = repository.findAll(PageRequest.of(totalOfPages-1, paginationSize)).getNumberOfElements();
+            totalOfItensInLastPage = repository.findAll(PageRequest.of(totalOfPages-1, pageSize)).getNumberOfElements();
         }
         return totalOfItensInLastPage;
     }

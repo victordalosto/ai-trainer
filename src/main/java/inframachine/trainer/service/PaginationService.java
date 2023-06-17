@@ -16,7 +16,7 @@ public class PaginationService {
             pagination.setItem(0);
         }
         
-        if (pagination.getItem() >= databaseRepository.getPaginationSize()) {
+        if (pagination.getItem() >= databaseRepository.getPageSize()) {
             pagination.setItem(0);
             pagination.setPage(pagination.getPage() + 1);
         }
