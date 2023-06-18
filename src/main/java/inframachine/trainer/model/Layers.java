@@ -19,7 +19,7 @@ public class Layers {
 
     public static List<Layers> getFirstLayer() throws IOException, StreamReadException, DatabindException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File("layers/primaryLayer.json"), 
+        return mapper.readValue(new File("src/main/layers/primaryLayer.json"), 
                                 mapper.getTypeFactory().constructCollectionType(List.class, Layers.class));
     }
 
@@ -27,7 +27,7 @@ public class Layers {
 
     public static List<Layers> getSecondLayer() throws StreamReadException, DatabindException, IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File("layers/secondaryLayer.json"), 
+        return mapper.readValue(new File("src/main/layers/secondaryLayer.json"), 
                                 mapper.getTypeFactory().constructCollectionType(List.class, Layers.class));
     }
 

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+sudo apt-get update -y
+sudo apt-get full-upgrade -y
+
+sudo apt install openjdk-17-jre -y
+
+# add vars
+sudo nano ~/.bashrc 
+export INFRAMACHINE_DB_URL=someurl
+export INFRAMACHINE_DB_PASSWORD=somepass
+export INFRAMACHINE_DB_USER=someuser
+export INFRAMACHINE_IMAGES_URL=someurl
+sudo source ~/.bashrc
+
+# create project
+sudo mkdir /app
+sudo cd /app
+sudo git clone https://github.com/victordalosto/ai-trainer.git /app
+
+sudo chmod +x /app/mvnw
+sudo ./mvnw clean package
+sudo java -jar /app/target/*.jar
