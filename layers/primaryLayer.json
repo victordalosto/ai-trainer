@@ -17,7 +17,7 @@
   },
   {
     "name": "educativa",
-    "color": "grey"
+    "color": "grey"           
   },
   {
     "name": "turistico",
@@ -29,6 +29,6 @@
   },
   {
     "name": "null",
-    "color": "black"
+    "color": "black"                                                                                                                                          
   }
 ]

@@ -44,7 +44,7 @@ public class HomeController {
         model.addAttribute("secondaryLayer", secondaryLayer);
 
         model.addAttribute("total", databaseRepository.getDatabaseLength());
-        model.addAttribute("contador", databaseRepository.getMappedLength());
+        model.addAttribute("count", databaseRepository.getMappedLength());
 
         Page<Domain> domains = databaseRepository.getDomains(pagination.getPage());
         model.addAttribute("domains", domains);
