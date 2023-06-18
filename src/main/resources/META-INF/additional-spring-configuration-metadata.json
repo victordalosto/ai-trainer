@@ -1,7 +1,14 @@
-{"properties": [
-  {
-    "name": "title",
-    "type": "java.lang.String",
-    "description": "A description for 'title'"
-  }
-]}
+{
+  "properties": [
+    {
+      "name": "title",
+      "type": "java.lang.String",
+      "description": "Header title"
+    },
+    {
+      "name": "inframachine.imageurl",
+      "type": "java.lang.String",
+      "description": "URL for the S3 bucket"
+    }
+  ]
+}

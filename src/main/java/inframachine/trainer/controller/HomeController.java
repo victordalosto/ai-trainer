@@ -19,6 +19,9 @@ public class HomeController {
     @Value("${title}")
     private String title;
 
+    @Value("${inframachine.imageurl}")
+    private String imageurl;
+
     @Autowired
     private List<Layers> primaryLayer;
 
@@ -51,6 +54,8 @@ public class HomeController {
         model.addAttribute("domain", domains.getContent().get(pagination.getItem()));
         model.addAttribute("page", domains.getPageable().getPageNumber());
         model.addAttribute("item", pagination.getItem());
+
+        model.addAttribute("imageurl", imageurl);
 
         return "home";
     }
