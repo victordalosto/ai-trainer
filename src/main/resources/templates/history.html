@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <th:block th:replace="~{components/head :: head}"></th:block>
+    <title>Infra-machine - TRAINER</title>
+</head>
+
+<body>
+    <th:block th:replace="~{components/navbar :: navbar}"></th:block>
+
+    <div class="container mt-5">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="text-center table-light" scope="col">Primary Layer</th>
+                <th class="text-center table-light" scope="col">Count</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr th:each="row : ${table}">
+                <td class="text-center" th:text="${row.name}">name</td>
+                <td class="text-center" th:text="${row.count}">count</td>
+            </tr>
+            <tr>
+                <td class="text-center table-active" style="font-weight: bold;" th:text="TOTAL">total</td>
+                <td class="text-center table-active" style="font-weight: bold;" th:text="${totalOfRows}">Default Count</td> 
+            </tr>
+            </tbody>
+          </table>
+    </div>
+    
+    <div th:each="row : ${table}">
+        <span th:value="${row}"></span>
+    </div>
+    
+
+</body>
+</html>
