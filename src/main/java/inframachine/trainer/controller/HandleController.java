@@ -18,7 +18,7 @@ public class HandleController {
     public String test(@PathVariable String id,
                        Form form,
                        Model model) {
-        repository.save(form.getMethod(), id);
+        repository.save(form, id);
         return "redirect:" + form.getNextPage();
     }
  

@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class Form {
 
-    private String parameter;
-    private String classification;
+    private String primaryLayer;
+    private String secondaryLayer;
     private String method;
     private String nextPage;
     

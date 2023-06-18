@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import inframachine.trainer.model.Domain;
+import inframachine.trainer.model.Form;
 import inframachine.trainer.repository.DomainRepository;
 import lombok.Getter;
 
@@ -58,13 +59,15 @@ public class DatabaseRepository {
     }
 
 
-    public void save(String method, String id) {
+    public void save(Form form, String id) {
         Domain domain = repository.findById(Integer.valueOf(id)).get();
-        if (method.equals("SAVE")) {
+        domain.setPrimaryLayer(form.getPrimaryLayer());
+        domain.setSecondaryLayer(form.getSecondaryLayer());
+        if (form.getMethod().equals("SAVE")) {
             domain.setValid(true);
             domain.setMapped(true);
             repository.save(domain);
-        } else if (method.equals("DELETE")) {
+        } else if (form.getMethod().equals("DELETE")) {
             domain.setValid(false);
             domain.setMapped(false);
             repository.save(domain);

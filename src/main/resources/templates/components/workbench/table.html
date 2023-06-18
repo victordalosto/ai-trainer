@@ -4,8 +4,8 @@
 
         <div class="row px-2">
 
-            <div class="col-lg-7 col-12">
-                <img th:src="@{/imgs/{id}.jpg(id=${domain.id})}" class="form-img card-img-top mt-1" alt="...">
+            <div id="image-container" class="col-lg-7 col-12">
+                <img id="image" th:src="@{/imgs/{id}.jpg(id=${domain.id})}" class="form-img card-img-top mt-1" alt="...">
             </div>
             
             <div class="col-lg-5 col-12 mt-2">

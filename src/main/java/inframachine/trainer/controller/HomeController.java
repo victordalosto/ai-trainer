@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import inframachine.trainer.model.Domain;
 import inframachine.trainer.model.Pagination;
-import inframachine.trainer.model.Parameter;
+import inframachine.trainer.model.Layers;
 import inframachine.trainer.service.DatabaseRepository;
 import inframachine.trainer.service.PaginationService;
 
@@ -20,10 +20,10 @@ public class HomeController {
     private String title;
 
     @Autowired
-    private List<Parameter> parameters;
+    private List<Layers> primaryLayer;
 
     @Autowired
-    private List<Parameter> classifications;
+    private List<Layers> secondaryLayer;
 
     @Autowired
     private DatabaseRepository databaseRepository;
@@ -40,8 +40,8 @@ public class HomeController {
         paginationService.fixPagination(pagination);
         
         model.addAttribute("title", title);
-        model.addAttribute("parameters", parameters);
-        model.addAttribute("classifications", classifications);
+        model.addAttribute("primaryLayer", primaryLayer);
+        model.addAttribute("secondaryLayer", secondaryLayer);
 
         model.addAttribute("total", databaseRepository.getDatabaseLength());
         model.addAttribute("contador", databaseRepository.getMappedLength());

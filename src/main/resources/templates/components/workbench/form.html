@@ -71,24 +71,24 @@
 
         <!-- FIRST FORM ITEM : [REGULAMENTACAO | INDICATIVA | ...] -->
         <div class="mt-3">
-            <select id="form-parameter" name="parameter" class="form-select">
-                <option th:each="p : ${parameters}" 
+            <select id="form-primaryLayer" name="primaryLayer" class="form-select">
+                <option th:each="p : ${primaryLayer}" 
                         th:text="${p.name}" 
                         th:value="${p.name}" 
                         th:color="${p.color}"
-                        th:selected="${domain.parameter == p.name}">
+                        th:selected="${domain.primaryLayer == p.name}">
                 </option>
             </select>
         </div>
 
         <!-- SECOND FORM ITEM : [BOA | REGULAR | RUIM] -->
         <div class="mt-3">
-            <select id="form-classification" name="classification" class="form-select">
-                <option th:each="p : ${classifications}" 
+            <select id="form-secondaryLayer" name="secondaryLayer" class="form-select">
+                <option th:each="p : ${secondaryLayer}" 
                         th:text="${p.name}" 
                         th:value="${p.name}" 
                         th:color="${p.color}"
-                        th:selected="${domain.classification == p.name}">
+                        th:selected="${domain.secondaryLayer == p.name}">
                 </option>
             </select>
             </select>

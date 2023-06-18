@@ -1,22 +1,22 @@
 // Forms color handler
 (() => {
 
-    const formParameter = document.getElementById('form-parameter');
-    const formClassification = document.getElementById('form-classification');
+    const primaryLayer = document.getElementById('form-primaryLayer');
+    const secondaryLayer = document.getElementById('form-secondaryLayer');
 
 
     function updateColor() {
-        formParameter.style.borderColor = formParameter.options[formParameter.selectedIndex].getAttribute("color");;
-        formClassification.style.borderColor = formClassification.options[formClassification.selectedIndex].getAttribute("color");;
+        primaryLayer.style.borderColor = primaryLayer.options[primaryLayer.selectedIndex].getAttribute("color");;
+        secondaryLayer.style.borderColor = secondaryLayer.options[secondaryLayer.selectedIndex].getAttribute("color");;
     }
 
     
-    formParameter.addEventListener('change', function() {
+    primaryLayer.addEventListener('change', function() {
         updateColor();
     });
 
 
-    formClassification.addEventListener('change', function() {
+    secondaryLayer.addEventListener('change', function() {
         updateColor();
     });
 
