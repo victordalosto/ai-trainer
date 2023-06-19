@@ -14,10 +14,9 @@ export INFRAMACHINE_IMAGES_URL=someurl
 sudo source ~/.bashrc
 
 # create project
-sudo mkdir /app
-sudo cd /app
 sudo git clone https://github.com/victordalosto/ai-trainer.git /app
 
 sudo chmod +x /app/mvnw
+cd /app
 sudo ./mvnw clean package
 sudo java -jar /app/target/*.jar
