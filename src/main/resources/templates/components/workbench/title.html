@@ -2,9 +2,9 @@
 
     <div class="container-flux">
 
-        <div class="align-items-center mt-2 mb-2 ms-5 row">
+        <div class="align-items-center mt-2 mb-2 row">
 
-            <span class="text-center col-12 me-2" 
+            <span class="text-center col-12" 
                   th:text="'Marcados: ' + ${count} + ' / ' + ${total} + ' (' + ${#numbers.formatPercent((count/total), 1, 1)}  + ')'">
                   cont
             </span>
