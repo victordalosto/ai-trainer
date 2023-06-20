@@ -1,6 +1,6 @@
 <th:block th:fragment="form">
 
-    <div class="row form-page-div py-1 mx-1  d-flex justify-content-center">
+    <div class="row form-page-div py-1 mx-1 mt-2 d-flex justify-content-center">
 
         <!-- PAGINATION -->
         <div class="col-12 col-lg-9 col-xl-7 pagination">
@@ -42,7 +42,7 @@
 
         
         <!-- SQUARES -->
-        <div class="col-12 p-0 mx-2">
+        <div class="col-12 p-0">
             <div class="form-rectangle">
                 <a th:each ="domain, status : ${domains}" 
                    th:attr="href=@{'/?page=' + ${page} + '&item=' + ${status.index}}"
@@ -64,7 +64,7 @@
 
 
     <!-- FORM -->
-    <form class="mt-4" th:action="@{/test/{id}(id=${domain.id})}" method="post">
+    <form class="mt-4" th:action="@{/post/{id}(id=${domain.id})}" method="post">
 
         <input id="form-id" type="hidden" name="id" th:value="${domain.id}">
         <input id="form-page" type="hidden" name="nextPage" th:value="'/?page=' + ${page} + '&item=' + ${item+1}">

@@ -5,14 +5,21 @@
 
 .menu-principal-item {
     padding: 0 10px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 
 .menu-principal-item a {
     color: rgba(131, 129, 129, 0.85);
+}
+
+
+.menu-principal-item .active {
+    color: rgba(5, 5, 5, 0.6);
+    font-weight: bold;
 }
 
 
@@ -30,4 +37,9 @@
 .github-icon:hover {
     color: #000000;
     transition: all 0.2s ease-in-out;
+}
+
+.nav-title {
+    font-size: 20px;
+    font-weight: 600;
 }

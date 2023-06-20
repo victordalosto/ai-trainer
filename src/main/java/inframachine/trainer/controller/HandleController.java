@@ -14,7 +14,7 @@ public class HandleController {
     @Autowired
     private DatabaseRepository repository;
 
-    @PostMapping("/test/{id}")
+    @PostMapping("/post/{id}")
     public String test(@PathVariable String id, Form form, Model model) {
         repository.save(form, id);
         return "redirect:" + form.getNextPage();

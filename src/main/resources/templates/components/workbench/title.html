@@ -2,13 +2,10 @@
 
     <div class="container-flux">
 
-        <div class="align-items-center mt-3 mb-3 ms-5 row">
-            <h5 class="col-6" th:text="${title}"> 
-                title
-            </h5>
+        <div class="align-items-center mt-2 mb-2 ms-5 row">
 
-            <span class="text-end col-5 me-2" 
-                  th:text="'Total marcado: ' + ${count} + ' / ' + ${total} + ' (' + ${#numbers.formatPercent((count/total), 1, 1)}  + ')'">
+            <span class="text-end col-7 me-2" 
+                  th:text="'Marcados: ' + ${count} + ' / ' + ${total} + ' (' + ${#numbers.formatPercent((count/total), 1, 1)}  + ')'">
                   cont
             </span>
         </div>
