@@ -1,19 +1,7 @@
-.form-img {
-    border-radius: 10px;
-    border: 3px solid var(--blue-principal);
-}
-
-
-.form-page-div {
-    border: 1px solid rgba(20, 20, 20, 0.1);
-    border-radius: 8px;
-    align-items: center;
-}
-
-
 .arrow {
     background-color: var(--blue-principal);
     color: white;
+    border-radius: 5px;
 }
 
 
@@ -23,11 +11,17 @@
 }
 
 
+.page-link-secondary{
+    height: 30px;
+    font-size: 12px;
+}
+
+
 .page-link::placeholder {
     font-size: 12px;
 }
 
 
 #page-number {
-    color: var(--green-principal);
+    color: var(--blue-principal);
 }

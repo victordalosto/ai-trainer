@@ -1,6 +1,9 @@
 .menu-principal {
     box-shadow: 0 0 10px -5px rgba(20, 20, 20, 0.5);
-    background-color: black;
+}
+
+.bg-dark {
+    background-color: var(--blue-principal) !important;
 }
 
 
@@ -18,7 +21,7 @@
 }
 
 .navbar-toggler {
-    margin-right: 1em;
+    margin-right: 22px;
 }
 
 
@@ -29,8 +32,8 @@
 
 
 .github-icon {
-    margin-left: 1em;
-    color: var(--blue-principal);
+    margin-left: 22px;
+    color: white;
 }
 
 
@@ -45,6 +48,6 @@
 }
 
 .nav-title {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
 }
