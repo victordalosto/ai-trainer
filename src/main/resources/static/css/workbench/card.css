@@ -1,12 +1,6 @@
-.form-card {
-    margin: 0.5em;
-    box-shadow: 2px 3px 3px 3px rgba(20, 20, 20, 0.05);
-    border-radius: 8px;
-}
-
-
 .form-img {
-    border-radius: 12px;
+    border-radius: 10px;
+    border: 3px solid var(--blue-principal);
 }
 
 
@@ -18,7 +12,7 @@
 
 
 .arrow {
-    background-color: var(--green-principal);
+    background-color: var(--blue-principal);
     color: white;
 }
 

@@ -1,5 +1,6 @@
 .menu-principal {
-    box-shadow: 0 0 10px -5px rgba(20, 20, 20, 0.5)
+    box-shadow: 0 0 10px -5px rgba(20, 20, 20, 0.5);
+    background-color: black;
 }
 
 
@@ -16,6 +17,10 @@
     color: rgba(131, 129, 129, 0.85);
 }
 
+.navbar-toggler {
+    margin-right: 1em;
+}
+
 
 .menu-principal-item .active {
     color: rgba(5, 5, 5, 0.6);
@@ -24,8 +29,8 @@
 
 
 .github-icon {
-    padding-right: 3em;
-    color: var(--green-principal);
+    margin-left: 1em;
+    color: var(--blue-principal);
 }
 
 

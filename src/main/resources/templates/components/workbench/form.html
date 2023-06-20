@@ -1,40 +1,33 @@
 <th:block th:fragment="form">
 
-    <div class="row form-page-div py-1 mx-1 mt-2 d-flex justify-content-center">
+
+    <div class="container-flux row">
+        <span class="text-center col-12 p-0 m-0"
+            th:text="'Sinalização: ' + ${count} + ' (' + ${#numbers.formatPercent((count/total), 1, 1)}  + ')'">
+            cont
+        </span>
+    </div>
+
+    
+
+    <div class="row form-page-div mx-1 mt-1 d-flex justify-content-center">
+
+        
 
         <!-- PAGINATION -->
         <div class="col-12 col-lg-9 px-2 col-xl-7 pagination">
 
-            <a class="page-link arrow" th:href="'/?page=' + ${page - 1}">
-                <span aria-hidden="true" style="display: inline-block; width: 35px;">
-                    <<
-                </span>
-            </a>
+         
 
             <a class="page-link arrow" th:href="'/?page=' + ${page} + '&item=' + ${item-1}">
                 <span aria-hidden="true" style="display: inline-block; width: 8px;">
                     <
                 </span>
             </a>
-
-            <div class="input-group mx-1">
-                <input id="page-number" type="text" 
-                        class="page-link form-control" 
-                        th:value="${page}"
-                        style="width: 40px"
-                        onkeydown="goToPage(event)">
-                </input>
-            </div>
-
+  
             <a class="page-link arrow" th:href="'/?page=' + ${page} + '&item=' + ${item+1}">
                 <span aria-hidden="true" style="display: inline-block; width: 8px;">
                     >
-                </span>
-            </a>
-
-            <a class="page-link arrow" th:href="'/?page=' + ${page + 1}">
-                <span aria-hidden="true" style="display: inline-block; width: 35px;">
-                    >>
                 </span>
             </a>
 

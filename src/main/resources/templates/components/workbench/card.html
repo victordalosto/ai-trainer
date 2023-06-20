@@ -1,14 +1,42 @@
 <th:block th:fragment="card">
 
-    <div class="form-card container-flux pb-2 mt-1">
+    <div class="form-card container-fluid mt-3 pb-3 mx-0 p-0">
 
-        <div class="row px-2">
 
-            <div id="image-container" class="col-lg-7 col-12">
+        <div class="row p-0 m-0">
+
+            <div class="col-12 pagination px-5">
+
+                <a class="page-link arrow" th:href="'/?page=' + ${page - 1}">
+                    <span aria-hidden="true" style="display: inline-block; width: 35px;">
+                        <<
+                    </span>
+                </a>
+
+                <div class="input-group mx-1">
+                    <input id="page-number" type="text" 
+                            class="page-link form-control" 
+                            th:value="${page}"
+                            style="width: 40px"
+                            onkeydown="goToPage(event)">
+                    </input>
+                </div>
+    
+                <a class="page-link arrow" th:href="'/?page=' + ${page + 1}">
+                    <span aria-hidden="true" style="display: inline-block; width: 35px;">
+                        >>
+                    </span>
+                </a>
+    
+
+            </div>
+            
+
+            <div class="col-lg-7 col-12 p-1">
                 <img id="image" th:src="${imageurl} + ${domain.id} + '.jpg'" class="form-img card-img-top mt-1" alt="...">
             </div>
             
-            <div class="col-lg-5 col-12 mt-2">
+            <div class="col-lg-5 col-12">
                 <th:block th:replace="~{components/workbench/form :: form}"></th:block>
             </div>
             
