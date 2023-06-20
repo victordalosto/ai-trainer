@@ -17,8 +17,8 @@ public class DatabaseRepository {
     private DomainRepository repository;
 
     private int totalOfPages;            // cacheable
-    private int totalOfItensInLastPage; // cacheable
-    private long databaseLength;   // cacheable
+    private int totalOfItensInLastPage;  // cacheable
+    private long databaseLength;         // cacheable
 
     @Getter
     private int pageSize = 10;
