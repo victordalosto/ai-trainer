@@ -1,12 +1,15 @@
 package inframachine.trainer.model;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+/**
+ * Simple table row that contains
+ * | name | count |
+ * |------|-------|
+ */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class TableRow {
 
     private String name;

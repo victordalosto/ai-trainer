@@ -13,6 +13,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
+/**
+ * This class handles the pagination of the trainer.
+ * 
+ * It is a filter that intercepts the requests and handles the pagination.
+ * If they are not valid, it redirects to valid pages.
+ */
 @Component
 public class PaginationConfiguration implements Filter {
 

@@ -1,4 +1,5 @@
 package inframachine.trainer.controller;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +17,9 @@ public class HistoryController {
 
     @GetMapping("/history")
     public String history(Model model) {
-        model.addAttribute("table", repository.getTable());
-        model.addAttribute("totalOfRows", repository.getTable().stream().mapToLong(TableRow::getCount).sum());
+        List<TableRow> table = repository.getTable();
+        model.addAttribute("table", table);
+        model.addAttribute("totalOfRows", table.stream().mapToLong(TableRow::getCount).sum());
         return "history";
     }
 }

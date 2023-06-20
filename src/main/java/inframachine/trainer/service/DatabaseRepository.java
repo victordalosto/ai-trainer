@@ -16,16 +16,24 @@ public class DatabaseRepository {
     @Autowired
     private DomainRepository repository;
 
-    private int totalOfPages;            // cacheable
-    private int totalOfItensInLastPage;  // cacheable
-    private long databaseLength;         // cacheable
+    private long tableCount = 0;               // cacheable
+    private int totalOfPages = 0;            // cacheable
+    private int totalOfItensInLastPage = 0;  // cacheable
 
     @Getter
     private int pageSize = 10;
 
 
-    public Page<Domain> getDomains(int page) {
+    public Page<Domain> getDomainsInPage(int page) {
         return repository.findAll(PageRequest.of(page, pageSize, Sort.by("id")));
+    }
+
+
+    public long getTableCount() {
+        if (tableCount == 0) {
+            tableCount = repository.count();
+        }
+        return tableCount;
     }
 
 
@@ -46,15 +54,7 @@ public class DatabaseRepository {
     }
 
 
-    public long getDatabaseLength() {
-        if (databaseLength == 0) {
-            databaseLength = repository.count();
-        }
-        return databaseLength;
-    }
-
-
-    public long getMappedLength() {
+    public long getTotalOfDomainsmapped() {
         return repository.countByIsMapped(true);
     }
 
