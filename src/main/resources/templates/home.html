@@ -3,17 +3,19 @@
 
 <head>
     <th:block th:replace="~{components/head :: head}"></th:block>
-    <link rel="stylesheet" href="css/workbench/card.css">
-    <link rel="stylesheet" href="css/workbench/form.css">
+    <link rel="stylesheet" href="css/page-link.css">
+    <link rel="stylesheet" href="css/form.css">
     <title>Infra-machine - TRAINER</title>
 </head>
 
 <body>
-    <th:block th:replace="~{components/navbar :: navbar}"></th:block>
-    
-    <th:block th:replace="~{components/workbench/card :: card}"></th:block>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <th:block th:replace="~{components/navbar :: navbar}"></th:block>
+
+    <th:block th:replace="~{components/layout :: layout}"></th:block>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
     <script src="js/form.js"></script>
 </body>
 </html>

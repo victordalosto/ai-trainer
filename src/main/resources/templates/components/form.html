@@ -1,0 +1,117 @@
+<th:block th:fragment="form">
+
+    <div class="mx-4 px-2">
+
+        <!-- CONTADOR -->
+        <div class="container-flux row">
+            <span class="text-center">
+                <a class="text-contador">
+                    Sinalização: 
+                </a>
+                <a class="text-contador"  style="font-weight: bold;"
+                    th:text="${count}">
+                </a>
+                
+                <a class="text-contador"
+                th:text="' (' + ${#numbers.formatPercent((count/total), 1, 1)} + ')'">
+                contagem + porcentagem></a>
+            </span>
+        </div>
+
+
+
+        <!-- SQUARE MARKERS -->
+        <div class="form-rectangle">
+
+                <div class="pagination">
+                    <a class="page-link page-link-secondary arrow"
+                        th:href="'/?page=' + ${page} + '&item=' + ${item-1}">
+                        <span aria-hidden="true" style="display: inline-block; width: 8px;">
+                            < 
+                        </span>
+                    </a>
+                </div>
+
+
+                <a th:each="domain, status : ${domains}"
+                    th:attr="href=@{'/?page=' + ${page} + '&item=' + ${status.index}}">
+
+                    <div class="form-square" th:classappend
+                        =  "(${!domain.isValid} ? 'form-square-notvalid' 
+                          : (${domain.isMapped} ? 'form-square-mapped' : ''))
+                        + (${status.index == item} ? ' form-square-selected' : ' form-square-deselected')">
+                    </div>
+                </a>
+
+
+                <div class="pagination">
+                    <a class="page-link page-link-secondary arrow"
+                        th:href="'/?page=' + ${page} + '&item=' + ${item+1}">
+                        <span aria-hidden="true" style="display: inline-block; width: 8px;">
+                            >
+                        </span>
+                    </a>
+                </div>
+
+        </div>
+
+
+
+        <!-- FORM -->
+        <form class="mt-3" th:action="@{/post/{id}(id=${domain.id})}" method="post">
+
+            <input id="form-id" type="hidden" name="id" th:value="${domain.id}">
+            <input id="form-page" type="hidden" name="nextPage" th:value="'/?page=' + ${page} + '&item=' + ${item+1}">
+
+            <span>
+                Tipo
+            </span>
+
+            <div class="mb-3">
+                <select id="form-primaryLayer" name="primaryLayer" class="form-select text-center">
+                    <option th:each="p : ${primaryLayer}" 
+                        th:text="${#strings.capitalize(p.name.toLowerCase())}"
+                        th:value="${p.name}" 
+                        th:color="${p.color}"
+                        th:selected="${domain.primaryLayer == p.name}">
+                    </option>
+                </select>
+            </div>
+
+
+            <span>
+                Categoria
+            </span>
+
+            <div>
+                <select id="form-secondaryLayer" name="secondaryLayer" class="form-select text-center">
+                    <option th:each="p : ${secondaryLayer}" 
+                        th:text="${p.name.toUpperCase()}" 
+                        th:value="${p.name}"
+                        th:color="${p.color}" 
+                        th:selected="${domain.secondaryLayer == p.name}">
+                    </option>
+                </select>
+                </select>
+            </div>
+
+
+            <div class="row mt-5">
+
+                <div class="col-6">
+                    <button id="btn-delete" type="submit" name="method" value="DELETE" class="btn btn-danger">
+                        DELETE
+                    </button>
+                </div>
+
+                <div class="col-6 d-flex justify-content-end">
+                    <button id="btn-save" name="method" value="SAVE" type="submit">
+                        SAVE
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</th:block>

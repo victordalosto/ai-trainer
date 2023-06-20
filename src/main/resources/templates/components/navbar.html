@@ -1,21 +1,22 @@
 <th:block th:fragment="navbar">
 
-    <nav class="menu-principal navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="nav-principal navbar navbar-expand-lg navbar-dark sticky-top py-1">
         
-        <a class="github-icon" href="https://github.com/victordalosto" target="_blank"><i class="fab fa-github"></i></a>
+        <a class="github-icon ms-5 me-2" href="https://github.com/victordalosto/ai-trainer" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
 
-        <a class="nav-title navbar-brand ms-4" href="#">
+        <a class="nav-title navbar-brand py-0 ps-2 ps-lg-0 m-0" href="/">
             Infra Trainer
         </a>
         
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        <button class="navbar-toggler me-5 p-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse mx-3" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ps-5 ml-auto">
 
                 <li class="menu-principal-item nav-item">
                     <a class="nav-link" href="/"

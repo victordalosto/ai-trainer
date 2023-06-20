@@ -1,0 +1,23 @@
+.page-link {
+    font-size: 14px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+
+
+.arrow {
+    background-color: var(--blue-principal);
+}
+
+
+.page-link-secondary {
+    height: 30px;
+    font-size: 12px;
+}
+
+
+#page-number {
+    color: var(--blue-principal);
+    font-size: 15px;
+}

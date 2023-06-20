@@ -1,0 +1,26 @@
+<th:block th:fragment="page-link">
+
+
+    <div class="pagination">
+
+    
+    <a class="page-link arrow" th:href="'/?page=' + ${page - 1}">
+        <span aria-hidden="true" style="display: inline-block; width: 35px;">
+            << </span>
+    </a>
+
+    <div class="input-group mx-2">
+        <input id="page-number" type="text" class="page-link form-control" th:value="${page}" style="width: 40px"
+            onkeydown="goToPage(event)">
+        </input>
+    </div>
+
+    <a class="page-link arrow" th:href="'/?page=' + ${page + 1}">
+        <span aria-hidden="true" style="display: inline-block; width: 35px;">
+            >>
+        </span>
+    </a>
+
+</div>
+
+</th:block>

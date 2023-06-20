@@ -1,0 +1,22 @@
+<th:block th:fragment="layout">
+
+    <div class="row form-card container-fluid mb-3 mx-0 p-0">
+
+        <div class="row col-12 justify-content-end p-0 mx-0 my-2">
+            <div class="col-12 col-md-5 p-0 m-0 px-5">
+                <th:block th:replace="~{components/page-link :: page-link}"></th:block>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-7 px-1">
+            <img id="image" th:src="${imageurl} + ${domain.id} + '.jpg'" class="form-img card-img-top" alt="...">
+        </div>
+
+        <div class="col-12 col-md-5">
+            <th:block th:replace="~{components/form :: form}"></th:block>
+        </div>
+
+
+    </div>
+
+</th:block>

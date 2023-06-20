@@ -9,11 +9,12 @@ import inframachine.trainer.service.DatabaseRepository;
 
 
 @Controller
-public class HandleController {
+public class PostController {
 
     @Autowired
     private DatabaseRepository repository;
 
+    
     @PostMapping("/post/{id}")
     public String test(@PathVariable String id, Form form, Model model) {
         repository.save(form, id);
