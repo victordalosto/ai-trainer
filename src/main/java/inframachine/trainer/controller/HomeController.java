@@ -15,9 +15,6 @@ import inframachine.trainer.service.DatabaseRepository;
 @Controller
 public class HomeController {
 
-    @Value("${title}")
-    private String title;
-
     @Value("${inframachine.imageurl}")
     private String imageURL;
 

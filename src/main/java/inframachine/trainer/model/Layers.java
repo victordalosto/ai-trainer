@@ -9,7 +9,7 @@ public class Layers {
 
     private String name;
 
-    private String htmlColor;
+    private String color;
 
 
 }
