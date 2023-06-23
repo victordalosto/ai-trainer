@@ -2,31 +2,75 @@
 
     <nav class="nav-principal navbar navbar-expand-lg navbar-dark sticky-top py-1">
         
-        <a class="github-icon ms-5 me-2" href="https://github.com/victordalosto/ai-trainer" target="_blank">
+        <a class="github-icon ms-5 me-2" target="_blank"
+           href="https://github.com/victordalosto/ai-trainer">
             <i class="fab fa-github"></i>
         </a>
 
-        <a class="nav-title navbar-brand py-0 ps-2 ps-lg-0 m-0" href="/">
+        <a class="nav-title navbar-brand py-0 ps-3 ps-lg-2 m-0" href="/">
             Infra Trainer
         </a>
         
         <button class="navbar-toggler me-5 p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ps-5 ml-auto">
+            <ul class="navbar-nav ms-5 ml-auto">
 
-                <li class="menu-principal-item nav-item">
-                    <a class="nav-link" href="/"
-                    th:classappend="${domains != null ? ' active' : ''}">
+                <li class="menu-principal-item nav-item mt-2 mt-md-0 mx-2">
+                    <a class="nav-link" 
+                       href="/"
+                       th:classappend="${domains != null ? ' active' : ''}">
                         Home
                     </a>
                 </li>
 
-                <li class="menu-principal-item nav-item">
-                    <a class="nav-link" href="/history"
+                <li class="menu-principal-item nav-item dropdown mx-2">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Tipo
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" 
+                            th:href="'/?' + (${page} ? ('&page=' + ${page}) : '') + (${item} ? ('&item=' + ${item}) : '')  + (${layer2} ? ('&layer2=' + ${layer2}) : '')">
+                            Todas</a>
+                        </li>
+                        <li th:each="p : ${layers1}">
+                            <a class="dropdown-item" 
+                               th:text="${#strings.capitalize(p.name.toLowerCase())}"
+                               th:value="${p.name}" 
+                               th:href="'/?layer1=' + ${p.name} + (${page} ? ('&page=' + ${page}) : '') + (${item} ? ('&item=' + ${item}) : '')  + (${layer2} ? ('&layer2=' + ${layer2}) : '')"
+                               th:classappend="${p.name == layer1 ? ' active' : ''}">
+                            </a>
+                    </ul>
+                </li>
+
+
+                <li class="menu-principal-item nav-item dropdown mx-2">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categoria
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" 
+                            th:href="'/?' + (${page} ? ('&page=' + ${page}) : '') + (${item} ? ('&item=' + ${item}) : '')  + (${layer1} ? ('&layer1=' + ${layer1}) : '')">
+                            Todas</a>
+                        </li>
+                        <li th:each="p : ${layers2}">
+                            <a class="dropdown-item" 
+                               th:text="${#strings.capitalize(p.name.toLowerCase())}"
+                               th:value="${p.name}" 
+                               th:href="'/?layer2=' + ${p.name} + (${page} ? ('&page=' + ${page}) : '') + (${item} ? ('&item=' + ${item}) : '')  + (${layer1} ? ('&layer1=' + ${layer1}) : '')"
+                               th:classappend="${p.name == layer2 ? ' active' : ''}">
+                            </a>
+                    </ul>
+                </li>
+
+                <li class="menu-principal-item nav-item mx-2">
+                    <a class="nav-link" 
+                       href="/history"
                        th:classappend="${domains == null ? ' active' : ''}">
                         Historico
                     </a>

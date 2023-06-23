@@ -35,7 +35,9 @@ public class HomeController {
 
 
     private String execute(Model model, Pagination pagination) {
-        Page<Domain> domains = databaseRepository.getDomainsInPage(pagination.getPage());
+        Page<Domain> domains = databaseRepository.getDomainsInPage(pagination.getPage(),
+                                                                   pagination.getLayer1(),
+                                                                   pagination.getLayer2());
         model.addAttribute("domains", domains);
         model.addAttribute("domain", domains.getContent().get(pagination.getItem()));
 
@@ -44,7 +46,6 @@ public class HomeController {
 
         model.addAttribute("page", domains.getPageable().getPageNumber());
         model.addAttribute("item", pagination.getItem());
-        System.out.println("Chegando como: " + pagination.getLayer1());
 
         model.addAttribute("layer1", pagination.getLayer1());
         model.addAttribute("layer2", pagination.getLayer2());
@@ -56,8 +57,6 @@ public class HomeController {
 
         return "home";
     }
-
-
 
 
 }

@@ -16,7 +16,7 @@ public class DatabaseRepository {
     @Autowired
     private DomainRepository repository;
 
-    private long tableCount = 0;               // cacheable
+    private long tableCount = 0;             // cacheable
     private int totalOfPages = 0;            // cacheable
     private int totalOfItensInLastPage = 0;  // cacheable
 
@@ -24,8 +24,9 @@ public class DatabaseRepository {
     private int pageSize = 10;
 
 
-    public Page<Domain> getDomainsInPage(int page) {
-        return repository.findAll(PageRequest.of(page, pageSize, Sort.by("id")));
+    public Page<Domain> getDomainsInPage(int page, String layer1, String layer2) {
+        return repository.findAll(DomainSpecification.of(layer1, layer2),
+                                  PageRequest.of(page, pageSize, Sort.by("id")));
     }
 
 

@@ -1,12 +1,17 @@
 package inframachine.trainer.repository;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import inframachine.trainer.model.Domain;
 import inframachine.trainer.model.TableRow;
 
 
-public interface DomainRepository extends JpaRepository<Domain, Integer> {
+public interface DomainRepository extends JpaRepository<Domain, Integer>,
+                                          JpaSpecificationExecutor<Domain> {
 
     long countByIsMapped(boolean b);
 
@@ -17,5 +22,9 @@ public interface DomainRepository extends JpaRepository<Domain, Integer> {
             GROUP BY p.layer1
             """)
     List<TableRow> getTable();
+
+
+    Page<Domain> findAll(Specification<Domain> specification, Pageable pageable);
+
 
 }

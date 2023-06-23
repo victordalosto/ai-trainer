@@ -75,12 +75,9 @@ public class PaginationConfiguration implements Filter {
         fixPageParam(pagination, pageParam);
         fixItemParam(pagination, itemParam);
 
-        System.out.println(pagination);
         if (pagination.isRedirect()) {
-            System.out.println("Sending redirect");
             response.sendRedirect(pagination.getRedirectLocation());
         } else {
-            System.out.println("Doing chain");
             filterChain.doFilter(request, response);
         }
     }
