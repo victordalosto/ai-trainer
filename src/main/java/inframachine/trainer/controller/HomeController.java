@@ -15,7 +15,7 @@ import inframachine.trainer.service.DatabaseRepository;
 @Controller
 public class HomeController {
 
-    @Value("#{systemEnvironment['INFRAMACHINE_IMAGES_URL'] ?: 'DEFAULT_VALUE'}")
+    @Value("#{systemEnvironment['INFRAMACHINE_IMAGES_URL']}")
     private String imageURL;
 
     @Autowired
@@ -46,5 +46,6 @@ public class HomeController {
 
         return "home";
     }
+
 
 }

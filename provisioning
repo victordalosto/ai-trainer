@@ -6,12 +6,11 @@ sudo apt-get full-upgrade -y
 sudo apt install openjdk-17-jre -y
 
 # add vars
-sudo nano ~/.bashrc 
-export INFRAMACHINE_DB_URL=someurl
-export INFRAMACHINE_DB_PASSWORD=somepass
-export INFRAMACHINE_DB_USER=someuser
-export INFRAMACHINE_IMAGES_URL=someurl
-sudo source ~/.bashrc
+sudo nano /etc/environment
+INFRAMACHINE_DB_URL="someurl"
+INFRAMACHINE_DB_PASSWORD="somepass"
+INFRAMACHINE_DB_USER="someuser"
+INFRAMACHINE_IMAGES_URL="someurl"
 
 # create project
 sudo git clone https://github.com/victordalosto/ai-trainer.git /app
@@ -19,4 +18,8 @@ sudo git clone https://github.com/victordalosto/ai-trainer.git /app
 sudo chmod +x /app/mvnw
 cd /app
 sudo ./mvnw clean package
-sudo java -jar /app/target/*.jar
+screen -dm ./mvnw spring-boot:run
+
+## To kill last screen: 
+# screen -ls
+# screen -r <code>
