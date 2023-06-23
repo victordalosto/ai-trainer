@@ -1,7 +1,9 @@
 package inframachine.trainer.filter;
 import java.io.IOException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import inframachine.trainer.model.Layers;
 import inframachine.trainer.model.Pagination;
 import inframachine.trainer.service.DatabaseRepository;
 import jakarta.servlet.Filter;
@@ -24,6 +26,13 @@ public class PaginationConfiguration implements Filter {
 
     @Autowired
     private DatabaseRepository repository;
+
+    @Autowired
+    private List<Layers> layers1;
+
+    @Autowired
+    private List<Layers> layers2;
+
 
 
     @Override
@@ -57,16 +66,54 @@ public class PaginationConfiguration implements Filter {
         
         Pagination pagination = new Pagination();
 
+        String layer1Param = request.getParameter("layer1");
+        String layer2Param = request.getParameter("layer2");
         String pageParam = request.getParameter("page");
         String itemParam = request.getParameter("item");
 
+        fixLayerParam(pagination, layer1Param, layer2Param);
         fixPageParam(pagination, pageParam);
         fixItemParam(pagination, itemParam);
 
+        System.out.println(pagination);
         if (pagination.isRedirect()) {
+            System.out.println("Sending redirect");
             response.sendRedirect(pagination.getRedirectLocation());
         } else {
+            System.out.println("Doing chain");
             filterChain.doFilter(request, response);
+        }
+    }
+
+
+    private void fixLayerParam(Pagination pagination, String layer1, String layer2) {
+        if (layer1 != null && !layer1.isBlank() && !layer1.equals("null")) {
+            boolean layer1Found = false;
+            for (Layers layer : layers1) {
+                if (layer.getName().equalsIgnoreCase(layer1)) {
+                    pagination.setLayer1(layer.getName());
+                    layer1Found = true; 
+                    break;
+                }
+            }
+            if (!layer1Found) {
+                pagination.setRedirect(true);
+                pagination.setLayer1("");
+            }
+        }
+        if (layer2 != null && !layer2.isBlank() && !layer2.equals("null")) {
+            boolean layer2Found = false;
+            for (Layers layer : layers2) {
+                if (layer.getName().equalsIgnoreCase(layer2)) {
+                    pagination.setLayer2(layer.getName());
+                    layer2Found = true;
+                    break;
+                }
+            }
+            if (!layer2Found) {
+                pagination.setRedirect(true);
+                pagination.setLayer2("");
+            }
         }
     }
 

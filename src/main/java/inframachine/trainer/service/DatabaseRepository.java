@@ -61,8 +61,8 @@ public class DatabaseRepository {
 
     public void save(Form form, String id) {
         Domain domain = repository.findById(Integer.valueOf(id)).get();
-        domain.setPrimaryLayer(form.getPrimaryLayer());
-        domain.setSecondaryLayer(form.getSecondaryLayer());
+        domain.setLayer1(form.getLayer1());
+        domain.setLayer2(form.getLayer2());
         if (form.getMethod().equals("SAVE")) {
             domain.setValid(true);
             domain.setMapped(true);

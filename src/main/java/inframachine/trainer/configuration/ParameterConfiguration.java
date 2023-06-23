@@ -13,8 +13,8 @@ import inframachine.trainer.model.Layers;
 public class ParameterConfiguration {
 
 
-    @Bean("primaryLayer")
-    public List<Layers> primaryLayer() throws StreamReadException, DatabindException, IOException {
+    @Bean("layers1")
+    public List<Layers> layers1() throws StreamReadException, DatabindException, IOException {
         List<Layers> layers = new ArrayList<Layers>();
         layers.add(new Layers("regulamentacao", "red"));
         layers.add(new Layers("advertencia", "rgb(225, 169, 24)"));
@@ -28,8 +28,8 @@ public class ParameterConfiguration {
     }
 
 
-    @Bean("secondaryLayer")
-    public List<Layers> secondaryLayer() throws StreamReadException, DatabindException, IOException {
+    @Bean("layers2")
+    public List<Layers> layers2() throws StreamReadException, DatabindException, IOException {
         List<Layers> layers = new ArrayList<Layers>();
         layers.add(new Layers("boa", "green"));
         layers.add(new Layers("regular", "orange"));

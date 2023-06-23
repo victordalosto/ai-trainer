@@ -4,9 +4,9 @@
     <div class="pagination">
 
     
-    <a class="page-link arrow" th:href="'/?page=' + ${page - 1}">
+        <a class="page-link arrow" th:href="'/?page=' + ${page - 1} + (${layer1} ? ('&layer1=' + ${layer1}) : '') + (${layer2} ? ('&layer2=' + ${layer2}) : '')">
         <span aria-hidden="true" style="display: inline-block; width: 35px;">
-            << </span>
+            &lt;&lt; </span>
     </a>
 
     <div class="input-group mx-2">
@@ -14,8 +14,9 @@
             onkeydown="goToPage(event)">
         </input>
     </div>
+    <span th:value="${layer1}"></span>
 
-    <a class="page-link arrow" th:href="'/?page=' + ${page + 1}">
+    <a class="page-link arrow" th:href="'/?page=' + ${page + 1} + (${layer1} ? ('&layer1=' + ${layer1}) : '') + (${layer2} ? ('&layer2=' + ${layer2}) : '')">
         <span aria-hidden="true" style="display: inline-block; width: 35px;">
             >>
         </span>

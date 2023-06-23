@@ -11,10 +11,10 @@ public interface DomainRepository extends JpaRepository<Domain, Integer> {
     long countByIsMapped(boolean b);
 
     @Query("""
-            SELECT new inframachine.trainer.model.TableRow(p.primaryLayer, COUNT(p.primaryLayer)) 
+            SELECT new inframachine.trainer.model.TableRow(p.layer1, COUNT(p.layer1)) 
             FROM placas p 
             WHERE p.isMapped = true 
-            GROUP BY p.primaryLayer
+            GROUP BY p.layer1
             """)
     List<TableRow> getTable();
 

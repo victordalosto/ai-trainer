@@ -25,7 +25,7 @@
 
                 <div class="pagination">
                     <a class="page-link page-link-secondary arrow"
-                        th:href="'/?page=' + ${page} + '&item=' + ${item-1}">
+                        th:href="'/?page=' + ${page} + '&item=' + ${item-1} + (${layer1} ? ('&layer1=' + ${layer1}) : '') + (${layer2} ? ('&layer2=' + ${layer2}) : '')">
                         <span aria-hidden="true" style="display: inline-block; width: 8px;">
                             < 
                         </span>
@@ -34,7 +34,7 @@
 
 
                 <a th:each="domain, status : ${domains}"
-                    th:attr="href=@{'/?page=' + ${page} + '&item=' + ${status.index}}">
+                    th:href="'/?page=' + ${page} + '&item=' + ${status.index} + (${layer1} ? ('&layer1=' + ${layer1}) : '') + (${layer2} ? ('&layer2=' + ${layer2}) : '')">
 
                     <div class="form-square" th:classappend
                         =  "(${!domain.isValid} ? 'form-square-notvalid' 
@@ -46,7 +46,7 @@
 
                 <div class="pagination">
                     <a class="page-link page-link-secondary arrow"
-                        th:href="'/?page=' + ${page} + '&item=' + ${item+1}">
+                        th:href="'/?page=' + ${page} + '&item=' + ${item+1} + (${layer1} ? ('&layer1=' + ${layer1}) : '') + (${layer2} ? ('&layer2=' + ${layer2}) : '')">
                         <span aria-hidden="true" style="display: inline-block; width: 8px;">
                             >
                         </span>
@@ -61,19 +61,19 @@
         <form class="mt-3" th:action="@{/post/{id}(id=${domain.id})}" method="post">
 
             <input id="form-id" type="hidden" name="id" th:value="${domain.id}">
-            <input id="form-page" type="hidden" name="nextPage" th:value="'/?page=' + ${page} + '&item=' + ${item+1}">
+            <input id="form-page" type="hidden" name="nextPage" th:value="'/?page=' + ${page} + '&item=' + ${item+1} + (${layer1} ? ('&layer1=' + ${layer1}) : '') + (${layer2} ? ('&layer2=' + ${layer2}) : '')">
 
             <span>
                 Tipo
             </span>
 
             <div class="mb-3">
-                <select id="form-primaryLayer" name="primaryLayer" class="form-select text-center">
-                    <option th:each="p : ${primaryLayer}" 
+                <select id="form-layer1" name="layer1" class="form-select text-center">
+                    <option th:each="p : ${layers1}" 
                         th:text="${#strings.capitalize(p.name.toLowerCase())}"
                         th:value="${p.name}" 
                         th:color="${p.color}"
-                        th:selected="${domain.primaryLayer == p.name}">
+                        th:selected="${domain.layer1 == p.name}">
                     </option>
                 </select>
             </div>
@@ -84,12 +84,12 @@
             </span>
 
             <div>
-                <select id="form-secondaryLayer" name="secondaryLayer" class="form-select text-center">
-                    <option th:each="p : ${secondaryLayer}" 
+                <select id="form-layer2" name="layer2" class="form-select text-center">
+                    <option th:each="p : ${layers2}" 
                         th:text="${p.name.toUpperCase()}" 
                         th:value="${p.name}"
                         th:color="${p.color}" 
-                        th:selected="${domain.secondaryLayer == p.name}">
+                        th:selected="${domain.layer2 == p.name}">
                     </option>
                 </select>
                 </select>

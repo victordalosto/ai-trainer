@@ -13,10 +13,10 @@ public class Domain {
     private Integer id;
 
     @Column(name = "nome")
-    private String primaryLayer;
+    private String layer1;
 
     @Column(name = "condicao")
-    private String secondaryLayer;
+    private String layer2;
 
     @Column(name = "is_mapped")
     private boolean isMapped;

@@ -53,8 +53,8 @@
     font-size: 20px;
 }
 
-#form-primaryLayer,
-#form-secondaryLayer {
+#form-layer1,
+#form-layer2 {
     border-width: 3px;
     font-weight: 600;
 }
