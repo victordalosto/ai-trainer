@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 src/main/resources/static/imgs/**
+provisioning
 
 ### STS ###
 .apt_generated

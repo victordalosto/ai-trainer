@@ -11,6 +11,7 @@ INFRAMACHINE_DB_URL="someurl"
 INFRAMACHINE_DB_PASSWORD="somepass"
 INFRAMACHINE_DB_USER="someuser"
 INFRAMACHINE_IMAGES_URL="someurl"
+source /etc/environment
 
 # create project
 sudo git clone https://github.com/victordalosto/ai-trainer.git /app
@@ -18,7 +19,7 @@ sudo git clone https://github.com/victordalosto/ai-trainer.git /app
 sudo chmod +x /app/mvnw
 cd /app
 sudo ./mvnw clean package
-screen -dm ./mvnw spring-boot:run
+screen -dm sudo ./mvnw spring-boot:run
 
 ## To kill last screen: 
 # screen -ls
