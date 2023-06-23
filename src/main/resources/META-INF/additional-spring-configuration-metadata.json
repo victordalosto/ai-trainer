@@ -1,9 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "inframachine.imageurl",
-      "type": "java.lang.String",
-      "description": "URL for the S3 bucket"
-    }
-  ]
-}

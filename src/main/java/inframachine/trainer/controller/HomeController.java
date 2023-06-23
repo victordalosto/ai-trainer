@@ -15,7 +15,7 @@ import inframachine.trainer.service.DatabaseRepository;
 @Controller
 public class HomeController {
 
-    @Value("${inframachine.imageurl}")
+    @Value("#{systemEnvironment['INFRAMACHINE_IMAGES_URL'] ?: 'DEFAULT_VALUE'}")
     private String imageURL;
 
     @Autowired
