@@ -6,8 +6,8 @@
 
 
     function updateColor() {
-        layer1.style.borderColor = layer1.options[layer1.selectedIndex].getAttribute("color");;
-        layer2.style.borderColor = layer2.options[layer2.selectedIndex].getAttribute("color");;
+        layer1.style.borderColor = layer1.options[layer1.selectedIndex].getAttribute('color');
+        layer2.style.borderColor = layer2.options[layer2.selectedIndex].getAttribute('color');
     }
 
     
@@ -29,6 +29,8 @@
 function goToPage(event) {
     if (event.key == 'Enter')  {
         const pageNumber = document.getElementById('page-number').value;
-        window.location.href = `/?page=${pageNumber}`;
+        const layerParam = document.getElementById('form-page').getAttribute('category');
+        const location = '/?page=' + pageNumber + (layerParam ? `${layerParam}` : '');
+        window.location.href = location;
     }
 }

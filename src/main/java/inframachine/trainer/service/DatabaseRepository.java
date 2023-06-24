@@ -56,7 +56,7 @@ public class DatabaseRepository {
 
 
     public long getTotalOfDomainsmapped() {
-        return repository.countByIsMapped(true);
+        return repository.countByIsMappedAndLayer1NotNull(true);
     }
 
 

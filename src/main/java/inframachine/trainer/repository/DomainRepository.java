@@ -13,7 +13,8 @@ import inframachine.trainer.model.TableRow;
 public interface DomainRepository extends JpaRepository<Domain, Integer>,
                                           JpaSpecificationExecutor<Domain> {
 
-    long countByIsMapped(boolean b);
+    @Query("SELECT COUNT(d) FROM placas d WHERE d.isMapped = :isMapped AND d.layer1 <> 'null'")
+    long countByIsMappedAndLayer1NotNull(boolean isMapped);
 
     @Query("""
             SELECT new inframachine.trainer.model.TableRow(p.layer1, COUNT(p.layer1)) 
