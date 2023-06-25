@@ -10,7 +10,7 @@
 		<relativePath /> 
 	</parent>
 
-	<groupId>inframachine</groupId>
+	<groupId>infralearning</groupId>
 	<artifactId>trainer</artifactId>
 	<version>1.0.0</version>
 	<name>trainer</name>

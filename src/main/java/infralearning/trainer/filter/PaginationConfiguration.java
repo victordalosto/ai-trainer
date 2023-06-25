@@ -1,11 +1,11 @@
-package inframachine.trainer.filter;
+package infralearning.trainer.filter;
 import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import inframachine.trainer.model.Layers;
-import inframachine.trainer.model.Pagination;
-import inframachine.trainer.service.DatabaseRepository;
+import infralearning.trainer.model.Layers;
+import infralearning.trainer.model.Pagination;
+import infralearning.trainer.service.DatabaseRepository;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

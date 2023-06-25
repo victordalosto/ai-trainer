@@ -1,12 +1,12 @@
-package inframachine.trainer.service;
+package infralearning.trainer.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import inframachine.trainer.model.Domain;
-import inframachine.trainer.model.Form;
-import inframachine.trainer.repository.DomainRepository;
+import infralearning.trainer.model.Domain;
+import infralearning.trainer.model.Form;
+import infralearning.trainer.repository.DomainRepository;
 import lombok.Getter;
 
 

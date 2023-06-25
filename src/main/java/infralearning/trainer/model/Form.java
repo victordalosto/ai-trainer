@@ -1,4 +1,4 @@
-package inframachine.trainer.model;
+package infralearning.trainer.model;
 import lombok.Data;
 
 

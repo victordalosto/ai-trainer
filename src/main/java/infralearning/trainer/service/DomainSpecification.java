@@ -1,6 +1,6 @@
-package inframachine.trainer.service;
+package infralearning.trainer.service;
 import org.springframework.data.jpa.domain.Specification;
-import inframachine.trainer.model.Domain;
+import infralearning.trainer.model.Domain;
 
 
 public class DomainSpecification {

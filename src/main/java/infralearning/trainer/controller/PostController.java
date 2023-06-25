@@ -1,11 +1,11 @@
-package inframachine.trainer.controller;
+package infralearning.trainer.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import inframachine.trainer.model.Form;
-import inframachine.trainer.service.DatabaseRepository;
+import infralearning.trainer.model.Form;
+import infralearning.trainer.service.DatabaseRepository;
 
 
 @Controller

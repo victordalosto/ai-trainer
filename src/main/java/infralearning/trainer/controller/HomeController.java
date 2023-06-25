@@ -1,4 +1,4 @@
-package inframachine.trainer.controller;
+package infralearning.trainer.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,10 +6,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import inframachine.trainer.model.Domain;
-import inframachine.trainer.model.Layers;
-import inframachine.trainer.model.Pagination;
-import inframachine.trainer.service.DatabaseRepository;
+import infralearning.trainer.model.Domain;
+import infralearning.trainer.model.Layers;
+import infralearning.trainer.model.Pagination;
+import infralearning.trainer.service.DatabaseRepository;
 
 
 @Controller
