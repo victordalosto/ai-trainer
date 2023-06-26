@@ -11,13 +11,15 @@ INFRAMACHINE_DB_URL="someurl"
 INFRAMACHINE_DB_PASSWORD="somepass"
 INFRAMACHINE_DB_USER="someuser"
 INFRAMACHINE_IMAGES_URL="someurl"
+INFRAMACHINE_ADMIN_USER="someValue"
+INFRAMACHINE_ADMIN_PASSWORD="someValue"
 source /etc/environment
 
 # create project
 sudo git clone https://github.com/victordalosto/ai-trainer.git /app
 
-sudo chmod +x /app/mvnw
 cd /app
+sudo chmod +x /app/mvnw
 sudo ./mvnw clean package
 screen -dm sudo ./mvnw spring-boot:run
 
