@@ -12,4 +12,6 @@ The evaluaters team simply go to the trainer home page and choose the category t
 
 Later, when the model is beign created by the <a href="https://github.com/victordalosto/infralearning-engine">engine</a>, those classified images are used to train the model.
 
-![web-page](https://raw.githubusercontent.com/victordalosto/infralearning-aitrainer/master/assets/screen.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/victordalosto/infralearning-aitrainer/master/assets/screen.png" alt="web-page">
+</div>
