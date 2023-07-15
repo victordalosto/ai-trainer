@@ -22,7 +22,7 @@ public interface DomainRepository extends JpaRepository<Domain, Integer>,
             WHERE p.isMapped = true 
             GROUP BY p.layer1
             """)
-    List<TableRow> getTable();
+    List<TableRow> getTable(); 
 
 
     Page<Domain> findAll(Specification<Domain> specification, Pageable pageable);
